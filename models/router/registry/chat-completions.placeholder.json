@@ -1,0 +1,16 @@
+{
+  "_doc": "POST http://127.0.0.1:7821/v1/chat/completions — OpenAI-compatible chat (used by ASI Agents llm-routing when GET /health is OK).",
+  "request": {
+    "model": "llama3.2",
+    "messages": [
+      { "role": "system", "content": "You are a concise assistant." },
+      { "role": "user", "content": "ping" }
+    ],
+    "temperature": 0.4,
+    "max_tokens": 512
+  },
+  "response": {
+    "object": "chat.completion",
+    "choices": [{ "message": { "role": "assistant", "content": "…" } }]
+  }
+}

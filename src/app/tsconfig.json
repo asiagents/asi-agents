@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "paths": {
+      "@theme/*": ["../shared/theme/Default/src/*"],
+      "@asi-api": ["./src/api.ts"],
+      "@app-integrations/*": ["./src/components/*"],
+      "@virtual-computer/*": ["../../modules/virtual-computer/*"]
+    }
+  },
+  "include": [
+    "src",
+    "../shared/theme/Default/src",
+    "../../modules/virtual-computer/ui"
+  ]
+}

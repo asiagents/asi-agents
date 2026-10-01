@@ -1,0 +1,14 @@
+{
+  "module": "virtual-computer",
+  "displayName": "Virtual Computer",
+  "externalRepoPath": "",
+  "controlUrl": "http://127.0.0.1:3456",
+  "probePath": "/api/v1/desks",
+  "novncDefaultPort": 6080,
+  "vncPasswordDefault": null,
+  "launch": {
+    "daemon": "python daemon/desk_daemon.py",
+    "cwd": "(set ASI_DESK_REPO)"
+  },
+  "policy": "Desk runtime is optional — set ASI_DESK_REPO; do not vendor Docker images into ASI Agents."
+}

@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "module": "games",
+  "games": [
+    {
+      "id": "agent-bike-race",
+      "title": "Agent Bike Race",
+      "description": "Your roster races bikes. Space to boost. Pure chaos.",
+      "tags": ["racing", "agents", "fun"],
+      "route": "/arcade/agent-bike-race",
+      "minPlayers": 2,
+      "maxPlayers": 8
+    },
+    {
+      "id": "agent-brawl",
+      "title": "Agent Brawl",
+      "description": "Pick two agents. Button-mash friendly trash talk. No models harmed.",
+      "tags": ["fight", "agents", "fun"],
+      "route": "/arcade/agent-brawl",
+      "minPlayers": 2,
+      "maxPlayers": 2
+    },
+    {
+      "id": "agent-chaos",
+      "title": "Agent Chaos Pit",
+      "description": "Agents wander and bump with silly status lines.",
+      "tags": ["sandbox", "agents", "fun"],
+      "route": "/arcade/agent-chaos",
+      "minPlayers": 3,
+      "maxPlayers": 12
+    }
+  ]
+}

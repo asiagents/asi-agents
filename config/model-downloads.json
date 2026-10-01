@@ -1,0 +1,180 @@
+{
+  "version": 3,
+  "label": "Local download recipes — AMS ship pair + optional tools. App Download button pulls AMS GGUF/ONNX when HF allows.",
+  "items": [
+    {
+      "id": "ams-micro-70m",
+      "name": "ASI AMS Micro 70M (router)",
+      "kind": "ams",
+      "capabilities": ["router", "intent", "local"],
+      "method": "gguf",
+      "pathHint": "models/ams/",
+      "suggestedFileName": "ams-micro-70m-q4_k_m.gguf",
+      "diskSizeHint": "~40–90 MB (Q4 GGUF) or ~260 MB (published ONNX)",
+      "ramHint": "~0.5–1 GB RAM",
+      "hardwareHint": "CPU / Pi / 8 GB laptop — no GPU required",
+      "command": "npm run install:ams -- --id ams-micro-70m",
+      "docsUrl": "models/ams/README.md",
+      "hfOrg": "https://huggingface.co/vvarghese",
+      "hfUrl": "https://huggingface.co/vvarghese/ams-micro-70m",
+      "installSteps": [
+        "Click Download in Settings → Models → Downloads (or run npm run install:ams).",
+        "Gated HF repo: set HF_TOKEN (or hf auth login) and accept access on https://huggingface.co/vvarghese/ams-micro-70m.",
+        "Product ONNX basename is ams-micro-70m.onnx (~68.15M → brand 70M). Install renames to that name even if HF still lists a legacy training filename.",
+        "Or manually place .gguf / .onnx into models/ams/.",
+        "Settings → Models → Browse → Scan now.",
+        "Run node scripts/verify-ams-gguf.mjs — status must be installed (ONNX on disk or GGUF)."
+      ],
+      "notes": "Default on-device intent router (:7821). Classifier — not a chat LLM. Matching ONNX marks installed with ONNX on disk badge (not claimed as GGUF). GGUF recipe stays uninstalled until a real .gguf exists. Reference router is still Ollama/llama.cpp."
+    },
+    {
+      "id": "ams-hybrid-120m",
+      "name": "ASI AMS Hybrid 120M (router)",
+      "kind": "ams",
+      "capabilities": ["router", "local"],
+      "method": "gguf",
+      "pathHint": "models/ams/",
+      "suggestedFileName": "ams-hybrid-120m-q4_k_m.gguf",
+      "diskSizeHint": "~80–160 MB (Q4 GGUF) or ~440 MB (FP32 ONNX)",
+      "ramHint": "~1–2 GB RAM",
+      "hardwareHint": "Prefer 8+ GB system RAM; CPU OK",
+      "command": "npm run install:ams -- --id ams-hybrid-120m",
+      "docsUrl": "models/ams/README.md",
+      "hfOrg": "https://huggingface.co/vvarghese",
+      "hfUrl": "https://huggingface.co/vvarghese/ams-hybrid-120m",
+      "installSteps": [
+        "Click Download or run npm run install:ams -- --id ams-hybrid-120m.",
+        "Gated HF: HF_TOKEN + access on https://huggingface.co/vvarghese/ams-hybrid-120m.",
+        "Product ONNX: ams-hybrid-120m.onnx (~116.07M → brand 120M). Never map Micro ONNX here.",
+        "Or place matching Hybrid weights into models/ams/, Scan, then verify."
+      ],
+      "notes": "Optional larger local router (legacy showcase-132m / q3x training lineage). Weights not shipped in git; local/HF ONNX marks installed honestly."
+    },
+    {
+      "id": "ams-agent-chat",
+      "name": "ASI AMS Agent Chat (~50–100M)",
+      "kind": "ams",
+      "advanced": true,
+      "capabilities": ["chat", "local"],
+      "method": "gguf",
+      "pathHint": "models/ams/",
+      "suggestedFileName": "agent-chat-50-100m-q4_k_m.gguf",
+      "diskSizeHint": "~40–120 MB (Q4 GGUF)",
+      "ramHint": "~0.5–1.5 GB RAM",
+      "hardwareHint": "CPU / laptop",
+      "command": "Copy-Item .\\agent-chat-50-100m-q4_k_m.gguf .\\models\\ams\\ ; node scripts/verify-ams-gguf.mjs",
+      "docsUrl": "models/ams/README.md",
+      "hfOrg": "https://huggingface.co/vvarghese",
+      "hfUrl": "https://huggingface.co/vvarghese",
+      "installSteps": [
+        "Hidden unless ASI_AMS_SHOW_ADVANCED=1.",
+        "Obtain agent-chat GGUF when available from https://huggingface.co/vvarghese.",
+        "Filename must include agent-chat or agentchat.",
+        "Copy into models/ams/, Scan, verify."
+      ],
+      "notes": "Advanced / non-ship. Short on-device specialist replies."
+    },
+    {
+      "id": "ams-ultra-gate",
+      "name": "Ultra gate ~1M",
+      "kind": "ams",
+      "advanced": true,
+      "capabilities": ["gate", "edge", "local"],
+      "method": "gguf",
+      "pathHint": "models/ams/",
+      "suggestedFileName": "ultra-gate-1m.gguf",
+      "diskSizeHint": "~1–5 MB",
+      "ramHint": "Negligible",
+      "hardwareHint": "Any device — edge toy only",
+      "command": "Copy-Item .\\ultra-gate-1m.gguf .\\models\\ams\\ ; node scripts/verify-ams-gguf.mjs",
+      "docsUrl": "models/ams/README.md",
+      "installSteps": [
+        "Hidden unless ASI_AMS_SHOW_ADVANCED=1.",
+        "Optional experiment weights only — never assign as ship brain.",
+        "Filename must include ultra-gate or ultragate.",
+        "Copy into models/ams/, Scan."
+      ],
+      "notes": "Advanced / non-ship. Tiny edge gate."
+    },
+    {
+      "id": "ollama-whisper",
+      "name": "Whisper (Ollama)",
+      "kind": "audio",
+      "capabilities": ["stt", "audio", "transcribe"],
+      "method": "ollama",
+      "command": "ollama pull whisper",
+      "docsUrl": "https://ollama.com/library/whisper",
+      "notes": "After pull, Whisper appears in Ollama model list (also probed by GET /api/models when Ollama is up)."
+    },
+    {
+      "id": "ollama-whisper-large",
+      "name": "Whisper Large v3 (Ollama)",
+      "kind": "audio",
+      "capabilities": ["stt", "audio", "transcribe"],
+      "method": "ollama",
+      "command": "ollama pull whisper-large-v3",
+      "docsUrl": "https://ollama.com/search?q=whisper",
+      "notes": "Higher quality; more VRAM/RAM."
+    },
+    {
+      "id": "gguf-whisper",
+      "name": "Whisper GGUF (llama.cpp)",
+      "kind": "audio",
+      "capabilities": ["stt", "audio"],
+      "method": "gguf",
+      "pathHint": "models/custom/",
+      "docsUrl": "https://huggingface.co/models?search=whisper+gguf",
+      "notes": "Download a Whisper .gguf from Hugging Face into models/custom, then Scan in Browse."
+    },
+    {
+      "id": "ollama-llava",
+      "name": "LLaVA vision (Ollama)",
+      "kind": "vision",
+      "capabilities": ["vision", "chat"],
+      "method": "ollama",
+      "command": "ollama pull llava",
+      "docsUrl": "https://ollama.com/library/llava",
+      "notes": "Image understanding for local agents."
+    },
+    {
+      "id": "ollama-moondream",
+      "name": "Moondream (Ollama)",
+      "kind": "vision",
+      "capabilities": ["vision", "chat"],
+      "method": "ollama",
+      "command": "ollama pull moondream",
+      "docsUrl": "https://ollama.com/library/moondream",
+      "notes": "Small vision model for laptops."
+    },
+    {
+      "id": "pip-docling",
+      "name": "Docling (PDF / Office parser)",
+      "kind": "documents",
+      "capabilities": ["pdf", "documents", "ocr"],
+      "method": "pip",
+      "command": "pip install docling",
+      "docsUrl": "https://github.com/docling-project/docling",
+      "notes": "Parse PDFs and exports to markdown — run beside agents, not inside GGUF scan."
+    },
+    {
+      "id": "pip-pytesseract",
+      "name": "Tesseract OCR (Python)",
+      "kind": "ocr",
+      "capabilities": ["ocr", "documents"],
+      "method": "pip",
+      "command": "pip install pytesseract pillow",
+      "docsUrl": "https://pypi.org/project/pytesseract/",
+      "notes": "Requires Tesseract binary installed on Windows (UB Mannheim build)."
+    },
+    {
+      "id": "pip-python-pptx",
+      "name": "python-pptx (deck builder)",
+      "kind": "deck",
+      "capabilities": ["deck", "slides", "documents"],
+      "method": "pip",
+      "command": "pip install python-pptx",
+      "docsUrl": "https://python-pptx.readthedocs.io/",
+      "notes": "Programmatic .pptx creation — pair with a chat model for slide content."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "_doc": "Example body for GET http://127.0.0.1:7821/health when the SLM router process is running.",
+  "ok": true,
+  "service": "asi-router",
+  "port": 7821
+}

@@ -1,0 +1,388 @@
+{
+  "agents": [
+    {
+      "id": "p-mira",
+      "name": "Dr. Mira",
+      "role": "Clinical notes",
+      "skills": [
+        "triage-notes",
+        "citations"
+      ],
+      "modelId": "hybrid"
+    },
+    {
+      "id": "p-pharm",
+      "name": "Pharm",
+      "role": "Dosage checker",
+      "skills": [
+        "dosage-check"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-claims",
+      "name": "Claims",
+      "role": "Billing coder",
+      "skills": [
+        "claims-coding",
+        "data-cleaning"
+      ],
+      "modelId": "agentchat"
+    },
+    {
+      "id": "p-ledger",
+      "name": "Ledger",
+      "role": "Budget analyst",
+      "skills": [
+        "budgeting",
+        "forecasting"
+      ],
+      "modelId": "hybrid"
+    },
+    {
+      "id": "p-forecast",
+      "name": "Forecast",
+      "role": "Forecaster",
+      "skills": [
+        "forecasting",
+        "stats"
+      ],
+      "modelId": "chat1b"
+    },
+    {
+      "id": "p-taxie",
+      "name": "Taxie",
+      "role": "Tax prep",
+      "skills": [
+        "tax-prep"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-audit",
+      "name": "Audit",
+      "role": "Auditor",
+      "skills": [
+        "contract-review",
+        "data-cleaning"
+      ],
+      "modelId": "hybrid"
+    },
+    {
+      "id": "p-counsel",
+      "name": "Counsel",
+      "role": "Contract reviewer",
+      "skills": [
+        "contract-review"
+      ],
+      "modelId": "chat3b"
+    },
+    {
+      "id": "p-clerk",
+      "name": "Clerk",
+      "role": "Case-law finder",
+      "skills": [
+        "case-law",
+        "citations"
+      ],
+      "modelId": "hybrid"
+    },
+    {
+      "id": "p-comply",
+      "name": "Comply",
+      "role": "Compliance",
+      "skills": [
+        "contract-review"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-hoot",
+      "name": "Prof. Hoot",
+      "role": "Tutor",
+      "skills": [
+        "lesson-plans",
+        "citations"
+      ],
+      "modelId": "hybrid"
+    },
+    {
+      "id": "p-quiz",
+      "name": "Quizzer",
+      "role": "Quiz maker",
+      "skills": [
+        "quiz-gen"
+      ],
+      "modelId": "agentchat"
+    },
+    {
+      "id": "p-syllabus",
+      "name": "Syllabus",
+      "role": "Lesson planner",
+      "skills": [
+        "lesson-plans",
+        "scheduling"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-coder",
+      "name": "Coder",
+      "role": "Engineer",
+      "skills": [
+        "code-review",
+        "test-writing",
+        "shell-sandbox"
+      ],
+      "modelId": "hybrid"
+    },
+    {
+      "id": "p-review",
+      "name": "Reviewer",
+      "role": "Code review",
+      "skills": [
+        "code-review"
+      ],
+      "modelId": "chat1b"
+    },
+    {
+      "id": "p-qa",
+      "name": "Tester",
+      "role": "QA",
+      "skills": [
+        "test-writing",
+        "shell-sandbox"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-drake",
+      "name": "Drake",
+      "role": "Architect",
+      "skills": [
+        "code-review",
+        "ui-mockups"
+      ],
+      "modelId": "chat3b"
+    },
+    {
+      "id": "p-pixel",
+      "name": "Pixel",
+      "role": "UI designer",
+      "skills": [
+        "ui-mockups"
+      ],
+      "modelId": "hybrid"
+    },
+    {
+      "id": "p-brand",
+      "name": "Brand",
+      "role": "Brand voice",
+      "skills": [
+        "brand-voice"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-motion",
+      "name": "Flicker",
+      "role": "Motion",
+      "skills": [
+        "ui-mockups",
+        "story"
+      ],
+      "modelId": "agentchat"
+    },
+    {
+      "id": "p-reach",
+      "name": "Reach",
+      "role": "SEO",
+      "skills": [
+        "seo"
+      ],
+      "modelId": "chat1b"
+    },
+    {
+      "id": "p-copy",
+      "name": "Copy",
+      "role": "Copywriter",
+      "skills": [
+        "brand-voice",
+        "story"
+      ],
+      "modelId": "hybrid"
+    },
+    {
+      "id": "p-social",
+      "name": "Social",
+      "role": "Social planner",
+      "skills": [
+        "scheduling",
+        "brand-voice"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-lab",
+      "name": "Lab",
+      "role": "Data cleaner",
+      "skills": [
+        "data-cleaning"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-stats",
+      "name": "Sigma",
+      "role": "Statistician",
+      "skills": [
+        "stats",
+        "data-cleaning"
+      ],
+      "modelId": "chat3b"
+    },
+    {
+      "id": "p-lit",
+      "name": "Lit",
+      "role": "Literature review",
+      "skills": [
+        "lit-review",
+        "citations"
+      ],
+      "modelId": "hybrid"
+    },
+    {
+      "id": "p-grant",
+      "name": "Grant",
+      "role": "Grant writer",
+      "skills": [
+        "story",
+        "citations"
+      ],
+      "modelId": "chat1b"
+    },
+    {
+      "id": "p-dispatch",
+      "name": "Dispatch",
+      "role": "Scheduler",
+      "skills": [
+        "scheduling"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-mail",
+      "name": "Postie",
+      "role": "Mail triage",
+      "skills": [
+        "mail-triage"
+      ],
+      "modelId": "agentchat"
+    },
+    {
+      "id": "p-keeper",
+      "name": "Keeper",
+      "role": "Inventory",
+      "skills": [
+        "data-cleaning",
+        "scheduling"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-quill",
+      "name": "Quill",
+      "role": "Story writer",
+      "skills": [
+        "story"
+      ],
+      "modelId": "hybrid"
+    },
+    {
+      "id": "p-voice",
+      "name": "Voice",
+      "role": "Narrator",
+      "skills": [
+        "story",
+        "brand-voice"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-editor",
+      "name": "Edit",
+      "role": "Editor",
+      "skills": [
+        "story",
+        "citations"
+      ],
+      "modelId": "chat1b"
+    },
+    {
+      "id": "p-ember",
+      "name": "Ember",
+      "role": "Lore keeper",
+      "skills": [
+        "lore",
+        "story"
+      ],
+      "modelId": "hybrid"
+    },
+    {
+      "id": "p-sage",
+      "name": "Sage",
+      "role": "Quest designer",
+      "skills": [
+        "lore",
+        "ui-mockups"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-level",
+      "name": "Blocks",
+      "role": "Level designer",
+      "skills": [
+        "ui-mockups"
+      ],
+      "modelId": "agentchat"
+    },
+    {
+      "id": "p-play",
+      "name": "Scout",
+      "role": "Playtester",
+      "skills": [
+        "test-writing"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-coach",
+      "name": "Coach",
+      "role": "Habits",
+      "skills": [
+        "scheduling"
+      ],
+      "modelId": "micro"
+    },
+    {
+      "id": "p-nomad",
+      "name": "Nomad",
+      "role": "Travel planner",
+      "skills": [
+        "travel",
+        "scheduling"
+      ],
+      "modelId": "agentchat"
+    },
+    {
+      "id": "p-buddy",
+      "name": "Penny",
+      "role": "Money buddy",
+      "skills": [
+        "budgeting"
+      ],
+      "modelId": "micro"
+    }
+  ]
+}

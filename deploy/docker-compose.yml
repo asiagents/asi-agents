@@ -1,0 +1,23 @@
+# Example Compose — ASI Agents core on :3445
+# Usage: from repo root → docker compose -f deploy/docker-compose.yml up -d
+# Requires a Dockerfile at repo root (add when you containerize). Until then, use systemd/pm2/nssm.
+
+services:
+  asi-agents:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: asi-agents:0.1
+    ports:
+      - "3445:3445"
+    environment:
+      NODE_ENV: production
+      ASI_AMS_SKILL_RUN: "0"
+      ASI_USE_POSTGRES: "0"
+      # OLLAMA_HOST: http://host.docker.internal:11434
+    volumes:
+      - asi-data:/data
+    restart: unless-stopped
+
+volumes:
+  asi-data:

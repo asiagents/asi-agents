@@ -1,0 +1,22 @@
+openapi: 3.0.3
+info:
+  title: ASI Desk control API (reference)
+  version: 0.1.0
+  description: |
+    Minimal reference copied into ASI Agents. Full implementation lives in
+    Desk install (ASI_DESK_REPO). MVP probes GET /api/v1/desks on :3456.
+servers:
+  - url: http://127.0.0.1:3456
+paths:
+  /api/v1/desks:
+    get:
+      summary: List desks (liveness probe for registry)
+      responses:
+        "200":
+          description: Desk list or empty array
+  /health:
+    get:
+      summary: Optional health (not used for MVP probe)
+      responses:
+        "200":
+          description: OK

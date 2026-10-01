@@ -1,0 +1,10 @@
+{
+  "name": "asi-router-reference",
+  "private": true,
+  "version": "0.1.0-mvp",
+  "type": "module",
+  "description": "Reference SLM router on loopback :7821 — forwards chat/completions to Ollama or llama.cpp; no canned replies.",
+  "scripts": {
+    "start": "node index.mjs"
+  }
+}

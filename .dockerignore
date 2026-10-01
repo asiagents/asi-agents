@@ -1,0 +1,15 @@
+node_modules
+**/node_modules
+**/dist
+.git
+.cursor
+_scratch
+agent-transcripts
+*.log
+.env
+.env.*
+!**/.env.example
+app-state.json
+services.json
+coverage
+.DS_Store

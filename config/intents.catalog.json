@@ -1,0 +1,518 @@
+{
+  "version": 1,
+  "intentCount": 52,
+  "thresholds": { "high": 0.72, "low": 0.35, "margin": 0.12 },
+  "intents": [
+    {
+      "id": "greeting.hello",
+      "handler": "static.greeting",
+      "confirm": false,
+      "phrases": ["hi", "hello", "hey", "hey chief", "good morning", "howdy"],
+      "keywords": ["hello", "hi", "hey"],
+      "negatives": ["help me write", "hello world code", "repeat after me", "echo", "parrot", "say exactly", "count from", "count to"]
+    },
+    {
+      "id": "greeting.bye",
+      "handler": "static.bye",
+      "confirm": false,
+      "phrases": ["bye", "goodbye", "see you", "see ya", "later"],
+      "keywords": ["bye", "goodbye"]
+    },
+    {
+      "id": "time.now",
+      "handler": "time.now",
+      "confirm": false,
+      "phrases": ["what time is it", "current time", "what's the time", "tell me the time"],
+      "keywords": ["time"],
+      "optionalKeywords": ["what", "current", "now"],
+      "negatives": ["time to", "timeout", "timezone", "times", "multiply", "plus", "minus"]
+    },
+    {
+      "id": "date.today",
+      "handler": "date.today",
+      "confirm": false,
+      "phrases": ["today's date", "what date is it", "what's today", "whats the date today", "current date", "what is today"],
+      "keywords": ["date", "today"]
+    },
+    {
+      "id": "tz.local",
+      "handler": "time.tz",
+      "confirm": false,
+      "phrases": ["what timezone", "my timezone", "time zone am i in"],
+      "keywords": ["timezone", "time zone", "zone"]
+    },
+    {
+      "id": "help.commands",
+      "handler": "help.commands",
+      "confirm": false,
+      "phrases": [
+        "help",
+        "commands",
+        "what can you do",
+        "what do you do",
+        "like what",
+        "what things",
+        "for example",
+        "such as",
+        "what exactly",
+        "which things"
+      ],
+      "keywords": ["help", "commands"],
+      "optionalKeywords": ["like what", "what things", "for example"]
+    },
+    {
+      "id": "app.version",
+      "handler": "app.version",
+      "confirm": false,
+      "phrases": ["app version", "asi agents version", "version of the app"],
+      "keywords": ["version"]
+    },
+    {
+      "id": "model.current",
+      "handler": "thread.model",
+      "confirm": false,
+      "phrases": ["which model", "what model am i on", "which model am i on", "current model", "my model"],
+      "keywords": ["model"]
+    },
+    {
+      "id": "backend.status",
+      "handler": "backend.status",
+      "confirm": false,
+      "phrases": ["connection status", "backend status", "is micro up", "are backends up", "router status"],
+      "keywords": ["status", "connection", "backend", "micro", "router"]
+    },
+    {
+      "id": "agents.list",
+      "handler": "agents.list",
+      "confirm": false,
+      "phrases": ["list agents", "list my agents", "show roster", "who is on the team", "show agents"],
+      "keywords": ["agents", "roster", "list"],
+      "negatives": ["open", "page", "go to", "attendance", "roll call", "whos here", "who is here"]
+    },
+    {
+      "id": "agents.attendance",
+      "handler": "agents.attendance",
+      "confirm": false,
+      "phrases": [
+        "agents attendance",
+        "take attendance",
+        "take roll",
+        "roll call",
+        "whos here",
+        "who is here",
+        "who's here",
+        "who is present",
+        "who is ready",
+        "attendance"
+      ],
+      "keywords": ["attendance", "roll call", "whos here", "who is here"],
+      "optionalKeywords": ["agents", "take", "present", "ready"],
+      "negatives": ["board", "create", "delete", "open agents", "list agents"],
+      "minScore": 0.55
+    },
+    {
+      "id": "agents.open",
+      "handler": "agents.open",
+      "confirm": false,
+      "regex": "(?:open|go to|show)\\s+agent\\s+(.+)",
+      "phrases": ["open agent"],
+      "keywords": ["open", "agent"],
+      "negatives": ["agents page", "agents"]
+    },
+    {
+      "id": "agents.create",
+      "handler": "agents.create",
+      "confirm": false,
+      "regex": "(?:create|add|make|new)\\s+agent",
+      "phrases": ["create an agent", "create agent", "add agent", "new agent"],
+      "keywords": ["create", "agent"],
+      "negatives": ["agents page", "open agents", "list agents", "delete agent", "remove agent", "travel", "finance"],
+      "minScore": 0.55
+    },
+    {
+      "id": "agents.create.role",
+      "handler": "agents.create",
+      "confirm": false,
+      "regex": "(?:create|add|make|need|want)\\s+([a-z][\\w-]*)\\s+agent",
+      "phrases": ["create travel agent", "create finance agent", "create coding agent", "create research agent", "create design agent", "create writer agent"],
+      "keywords": ["create", "agent"],
+      "optionalKeywords": ["travel", "finance", "coding", "code", "research", "design", "writer", "writing", "any", "name"],
+      "negatives": ["agents page", "list agents", "delete agent", "remove agent"],
+      "minScore": 0.7
+    },
+    {
+      "id": "agents.create.batch",
+      "handler": "agents.create",
+      "confirm": false,
+      "regex": "(?:i\\s+)?(?:need|want|create|add|make)\\s+(\\d+)\\s+(?:([a-z][\\w-]*)\\s+)?agents?",
+      "phrases": ["need agents", "create agents", "i need agents", "add agents"],
+      "keywords": ["agents"],
+      "optionalKeywords": ["need", "create", "add", "want", "any", "names"],
+      "negatives": ["agents page", "list agents", "open agents", "delete"],
+      "minScore": 0.7
+    },
+    {
+      "id": "agents.create.any_name",
+      "handler": "agents.create",
+      "confirm": false,
+      "phrases": ["any names are fine", "any name is fine", "add any name", "any name", "pick any name", "whatever name", "you pick the name"],
+      "keywords": ["any", "name"],
+      "optionalKeywords": ["names", "fine", "add", "pick"],
+      "negatives": ["rename", "call me", "display name", "create", "need", "want", "agents"],
+      "minScore": 0.7
+    },
+    {
+      "id": "agents.delete",
+      "handler": "client.pro_delete",
+      "confirm": true,
+      "regex": "(?:delete|remove)\\s+agent\\s+(.+)",
+      "phrases": ["delete agent", "remove agent"],
+      "keywords": ["delete", "agent"]
+    },
+    {
+      "id": "nav.home",
+      "handler": "client.nav",
+      "confirm": false,
+      "path": "/",
+      "phrases": ["go home", "open home", "take me home"],
+      "keywords": ["home"]
+    },
+    {
+      "id": "nav.chat",
+      "handler": "client.nav",
+      "confirm": false,
+      "path": "/chat/chief",
+      "phrases": ["open chat", "chief chat", "open chief chat"],
+      "keywords": ["chat", "chief"]
+    },
+    {
+      "id": "nav.inbox",
+      "handler": "client.nav",
+      "confirm": false,
+      "path": "/inbox",
+      "phrases": ["open inbox", "show inbox", "go to inbox"],
+      "keywords": ["inbox"]
+    },
+    {
+      "id": "nav.group",
+      "handler": "client.nav",
+      "confirm": false,
+      "path": "/group",
+      "phrases": ["open group", "go to group", "take me to group", "council", "meeting room"],
+      "keywords": ["group", "council"]
+    },
+    {
+      "id": "nav.office",
+      "handler": "client.nav",
+      "confirm": false,
+      "path": "/office",
+      "phrases": ["open office", "go to office", "the floor"],
+      "keywords": ["office"]
+    },
+    {
+      "id": "nav.agents",
+      "handler": "client.nav",
+      "confirm": false,
+      "path": "/agents",
+      "phrases": ["open agents", "agents page", "open agents page", "go to agents"],
+      "keywords": ["agents"],
+      "negatives": ["list", "roster", "who is"]
+    },
+    {
+      "id": "nav.board",
+      "handler": "client.nav",
+      "confirm": false,
+      "path": "/board",
+      "phrases": ["open board", "decision board"],
+      "keywords": ["board"]
+    },
+    {
+      "id": "nav.desk",
+      "handler": "client.nav",
+      "confirm": false,
+      "path": "/desk",
+      "phrases": ["open desk", "virtual desk"],
+      "keywords": ["desk"]
+    },
+    {
+      "id": "nav.arcade",
+      "handler": "client.nav",
+      "confirm": false,
+      "path": "/arcade",
+      "phrases": ["open arcade", "play games", "agent games", "mini games"],
+      "keywords": ["arcade", "games"]
+    },
+    {
+      "id": "game.agent_bike_race",
+      "handler": "client.nav",
+      "confirm": false,
+      "path": "/arcade/agent-bike-race",
+      "phrases": ["bike race", "agent bike race", "agent racing", "race the agents"],
+      "keywords": ["race", "bike"]
+    },
+    {
+      "id": "nav.settings",
+      "handler": "client.nav",
+      "confirm": false,
+      "path": "/settings",
+      "phrases": ["open settings", "go to settings"],
+      "keywords": ["settings"]
+    },
+    {
+      "id": "meeting.status",
+      "handler": "meeting.status",
+      "confirm": false,
+      "phrases": ["is the meeting open", "meeting status", "session status", "is session open"],
+      "keywords": ["meeting", "session", "open"]
+    },
+    {
+      "id": "meeting.start",
+      "handler": "meeting.start",
+      "confirm": true,
+      "phrases": ["start meeting", "start the meeting", "open session", "call meeting"],
+      "keywords": ["start", "meeting", "session"]
+    },
+    {
+      "id": "meeting.end",
+      "handler": "meeting.end",
+      "confirm": true,
+      "phrases": ["end meeting", "end the meeting", "close session", "adjourn"],
+      "keywords": ["end", "meeting", "close", "session"]
+    },
+    {
+      "id": "panic.trigger",
+      "handler": "client.panic",
+      "confirm": true,
+      "phrases": ["panic", "emergency stop", "stop everything"],
+      "keywords": ["panic", "emergency"]
+    },
+    {
+      "id": "confirm.yes",
+      "handler": "confirm.yes",
+      "confirm": false,
+      "phrases": ["yes", "confirm", "do it", "go ahead", "yes confirm"],
+      "keywords": ["yes", "confirm"]
+    },
+    {
+      "id": "confirm.no",
+      "handler": "confirm.no",
+      "confirm": false,
+      "phrases": ["no", "cancel", "never mind", "nevermind", "no cancel"],
+      "keywords": ["no", "cancel"]
+    },
+    {
+      "id": "prefs.display_name",
+      "handler": "prefs.set_display_name",
+      "confirm": false,
+      "regex": "(?:call me|my name is|rename me to|set my name to|change my name to)\\s+(.+)",
+      "phrases": ["call me", "my name is", "rename me", "set my name"],
+      "keywords": ["call me", "my name", "rename me"],
+      "negatives": ["rename yourself", "call yourself", "rename chief", "i call", "ill call", "i will call"]
+    },
+    {
+      "id": "agent.rename",
+      "handler": "agent.rename",
+      "confirm": false,
+      "regex": "(?:rename yourself to|call yourself|rename chief to|change your name to|your name is|i call|ill call|i will call)\\s+(.+?)(?:\\s+(?:and(?:\\s+then)?|then|also)\\b|$)",
+      "phrases": ["rename yourself", "call yourself", "rename chief", "your name is", "i call", "ill call", "i will call"],
+      "keywords": ["rename yourself", "call yourself", "rename chief", "your name", "i call", "ill call"],
+      "negatives": ["call me", "rename me", "my name"]
+    },
+    {
+      "id": "agent.rename_bare",
+      "handler": "agent.rename",
+      "confirm": false,
+      "regex": "^rename to\\s+(.+?)(?:\\s+(?:and(?:\\s+then)?|then|also)\\b|$)",
+      "phrases": ["rename to"],
+      "keywords": ["rename"],
+      "optionalKeywords": ["to"],
+      "negatives": ["rename me", "rename yourself", "call me", "my name", "rename chief"]
+    },
+    {
+      "id": "agent.set_avatar",
+      "handler": "agent.set_avatar",
+      "confirm": false,
+      "regex": "(?:add|change|set|pick|upload)\\s+(?:a\\s+)?(?:new\\s+)?(?:image|avatar|photo|picture)",
+      "phrases": [
+        "add a new image",
+        "add a new photo",
+        "change your avatar",
+        "change your photo",
+        "set a new image",
+        "set a new avatar",
+        "new avatar",
+        "change photo",
+        "change image"
+      ],
+      "keywords": ["avatar", "photo", "image", "picture"],
+      "optionalKeywords": ["new", "add", "change", "set"],
+      "negatives": ["create an agent", "open image", "find me a movie"]
+    },
+    {
+      "id": "agent.set_staff_role",
+      "handler": "agent.set_staff_role",
+      "confirm": false,
+      "regex": "(?:be my|you(?:'re| are)(?: my)?|set (?:your )?role to|call yourself my)\\s+(chief|secretary|buddy|staff)",
+      "phrases": ["be my secretary", "be my buddy", "be my chief", "set role to secretary", "set role to buddy"],
+      "keywords": ["secretary", "buddy", "staff role"],
+      "optionalKeywords": ["be", "my", "role"],
+      "negatives": ["rename yourself", "call me", "create"]
+    },
+    {
+      "id": "chief.identity",
+      "handler": "static.chief",
+      "confirm": false,
+      "phrases": ["who are you", "what is chief", "what are you"],
+      "keywords": ["who", "chief"],
+      "negatives": ["here", "present", "attendance", "roll call", "board"]
+    },
+    {
+      "id": "set.list",
+      "handler": "set.list",
+      "confirm": false,
+      "phrases": ["list pro sets", "which set", "pro sets"],
+      "keywords": ["set", "sets", "pro"]
+    },
+    {
+      "id": "set.switch",
+      "handler": "set.switch",
+      "confirm": true,
+      "regex": "switch to (?:the )?([\\w-]+)(?: set)?",
+      "phrases": ["switch set"],
+      "keywords": ["switch", "set"]
+    },
+    {
+      "id": "board.list",
+      "handler": "board.list",
+      "confirm": false,
+      "phrases": ["who is on the board", "board members", "on the board"],
+      "keywords": ["board"]
+    },
+    {
+      "id": "research.movie",
+      "handler": "research.movie",
+      "confirm": false,
+      "regex": "(?:find me a movie|find a movie|movie about|search for movie|find movie)\\s+(?:about\\s+)?(.+)",
+      "phrases": ["find me a movie", "find a movie"],
+      "keywords": ["movie"],
+      "optionalKeywords": ["find", "search"]
+    },
+    {
+      "id": "research.song",
+      "handler": "research.song",
+      "confirm": false,
+      "regex": "(?:find me a song|find a song|song called|search for song|find song)\\s+(.+)",
+      "phrases": ["find me a song", "find a song"],
+      "keywords": ["song"],
+      "optionalKeywords": ["find", "search"]
+    },
+    {
+      "id": "location.unavailable",
+      "handler": "location.unavailable",
+      "confirm": false,
+      "phrases": [
+        "where are we",
+        "where am i",
+        "where's my location",
+        "what is my location",
+        "whats my location",
+        "my location",
+        "current location",
+        "where is this"
+      ],
+      "keywords": ["location"],
+      "optionalKeywords": ["where", "my", "current"],
+      "negatives": ["where is the file", "where is settings", "where do i go", "open location"]
+    },
+    {
+      "id": "ops.diagnose",
+      "handler": "ops.diagnose",
+      "confirm": false,
+      "phrases": [
+        "diagnose backends",
+        "diagnose ollama",
+        "fix backends",
+        "check ollama",
+        "probe models",
+        "why is chat failing",
+        "backend diagnose"
+      ],
+      "keywords": ["diagnose", "backends", "ollama"],
+      "optionalKeywords": ["fix", "probe", "check"],
+      "negatives": ["diagnose code", "diagnose bug"]
+    },
+    {
+      "id": "ops.restart_asi",
+      "handler": "ops.restart_asi",
+      "confirm": true,
+      "phrases": [
+        "restart asi",
+        "restart the server",
+        "restart asi server",
+        "restart product server",
+        "restart api server"
+      ],
+      "keywords": ["restart", "asi", "server"],
+      "negatives": ["restart pc", "reboot", "restart computer", "restart windows"]
+    },
+    {
+      "id": "ops.suggest_reboot",
+      "handler": "ops.suggest_reboot",
+      "confirm": false,
+      "phrases": [
+        "should i reboot",
+        "suggest reboot",
+        "restart pc",
+        "reboot computer",
+        "should i restart the pc"
+      ],
+      "keywords": ["reboot", "pc"],
+      "optionalKeywords": ["restart", "computer", "suggest"],
+      "negatives": ["restart asi", "restart server"]
+    },
+    {
+      "id": "math.simple",
+      "handler": "math.simple",
+      "confirm": false,
+      "regex": "(?:whats?|calculate|compute)?\\s*(?:\\d+|zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)(?:\\s|-)*(?:\\d+|zero|one|two|three|four|five|six|seven|eight|nine)?\\s*(?:times|time|plus|minus|\\*|x|/)\\s*",
+      "phrases": [
+        "seventeen times 19",
+        "17 times 19",
+        "what is 17 times 19",
+        "17 * 19",
+        "what is 17x19",
+        "calculate 2 plus 2"
+      ],
+      "keywords": ["times", "plus", "minus", "*", "x"],
+      "optionalKeywords": ["what", "whats", "calculate", "compute", "divided"],
+      "negatives": ["why is", "explain", "large values", "equals five", "claim that"],
+      "minScore": 0.7
+    },
+    {
+      "id": "playful.echo",
+      "handler": "playful.echo",
+      "confirm": false,
+      "regex": "(?:repeat after me|echo(?:\\s+this)?|say exactly|parrot)\\s*[:\\-]?\\s*(.+)",
+      "phrases": ["repeat after me", "echo this", "say exactly", "parrot"],
+      "keywords": ["repeat after me", "echo", "parrot", "say exactly"],
+      "negatives": ["rename", "call me", "create", "echo chamber"],
+      "minScore": 0.55
+    },
+    {
+      "id": "playful.count",
+      "handler": "playful.count",
+      "confirm": false,
+      "regex": "count(?:\\s+from)?\\s+(\\d+)\\s*(?:to|-)\\s*(\\d+)|count(?:\\s+up)?\\s+to\\s+(\\d+)",
+      "phrases": [
+        "count from 1 to 10",
+        "count to 10",
+        "count from 1 to 100",
+        "count up to 20"
+      ],
+      "keywords": ["count"],
+      "optionalKeywords": ["from", "to", "up"],
+      "negatives": ["agents", "word count", "countdown", "account", "county"],
+      "minScore": 0.7
+    }
+  ]
+}

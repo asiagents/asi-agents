@@ -1,0 +1,238 @@
+{
+  "agents": [
+    {
+      "id": "chief",
+      "name": "Chief",
+      "role": "Chief of staff",
+      "status": "active",
+      "modelId": "micro",
+      "secondaryModelId": null,
+      "skills": [
+        "mail-triage",
+        "scheduling",
+        "ticket-summarize",
+        "proposal-draft",
+        "shift-handoff",
+        "web-browsing"
+      ],
+      "source": "registry",
+      "updatedAt": "2026-10-01T11:03:16.074Z",
+      "avatar": "49af1521-77d1-40aa-b6fa-a459c12e742b.jpg",
+      "roleTag": "chief",
+      "initials": "CH",
+      "isChief": true,
+      "currentTask": "Online · flat with you",
+      "routePref": null,
+      "reportsTo": null
+    },
+    {
+      "id": "finance",
+      "name": "Finance",
+      "role": "Spend gates and budgets",
+      "status": "idle",
+      "modelId": "hybrid",
+      "secondaryModelId": null,
+      "skills": [
+        "budgeting",
+        "spend-gates"
+      ],
+      "source": "registry",
+      "updatedAt": "2026-09-30T07:47:54Z",
+      "avatar": "49af1521-77d1-40aa-b6fa-a459c12e742b.jpg",
+      "roleTag": "Ops",
+      "initials": "FI",
+      "isChief": false,
+      "currentTask": "Ready",
+      "routePref": null,
+      "reportsTo": null
+    },
+    {
+      "id": "design",
+      "name": "Design",
+      "role": "Slides and UI",
+      "status": "idle",
+      "modelId": "hybrid",
+      "secondaryModelId": null,
+      "skills": [
+        "ui-mockups",
+        "slides"
+      ],
+      "source": "registry",
+      "updatedAt": "2026-09-30T07:47:54Z",
+      "avatar": "b104522c-28b3-4dd2-9e09-1631b970a2e0.jpg",
+      "roleTag": "Create",
+      "initials": "DE",
+      "isChief": false,
+      "currentTask": "Ready",
+      "routePref": null,
+      "reportsTo": null
+    },
+    {
+      "id": "research",
+      "name": "Research",
+      "role": "Papers and briefs",
+      "status": "idle",
+      "modelId": "chat1b",
+      "secondaryModelId": null,
+      "skills": [
+        "citations",
+        "literature",
+        "web-browsing"
+      ],
+      "source": "registry",
+      "updatedAt": "2026-10-01T11:03:14.785Z",
+      "avatar": "38c8914b-4cb9-4602-a890-37c8bc4a3db6.jpg",
+      "roleTag": "Find",
+      "initials": "RE",
+      "isChief": false,
+      "currentTask": "Ready",
+      "routePref": null,
+      "reportsTo": null
+    },
+    {
+      "id": "coder",
+      "name": "Coder",
+      "role": "Labs and code",
+      "status": "idle",
+      "modelId": "hybrid",
+      "secondaryModelId": null,
+      "skills": [
+        "code-review",
+        "shell-sandbox"
+      ],
+      "source": "registry",
+      "updatedAt": "2026-09-30T07:47:54Z",
+      "avatar": "e2b650a4-4c63-42fc-b52f-60d2a4fb8025.jpg",
+      "roleTag": "Build",
+      "initials": "{}",
+      "isChief": false,
+      "currentTask": "Ready",
+      "routePref": null,
+      "reportsTo": null
+    },
+    {
+      "id": "asasas",
+      "name": "asasas",
+      "role": "Chat specialist",
+      "status": "idle",
+      "modelId": "micro",
+      "secondaryModelId": null,
+      "skills": [
+        "chat"
+      ],
+      "source": "registry",
+      "updatedAt": "2026-09-30T19:42:35.064Z",
+      "avatar": null,
+      "roleTag": "Chat",
+      "initials": "AS",
+      "isChief": false,
+      "currentTask": "Ready for group chat",
+      "routePref": null,
+      "reportsTo": null
+    },
+    {
+      "id": "mira",
+      "name": "Mira",
+      "role": "Group chat participant",
+      "status": "idle",
+      "modelId": "micro",
+      "secondaryModelId": null,
+      "skills": [
+        "cash-flow"
+      ],
+      "source": "registry",
+      "updatedAt": "2026-09-30T20:04:06.639Z",
+      "avatar": null,
+      "roleTag": "Council",
+      "initials": "MI",
+      "isChief": false,
+      "currentTask": "Ready for group chat",
+      "routePref": null,
+      "reportsTo": null
+    },
+    {
+      "id": "probe-agent",
+      "name": "Probe Agent",
+      "role": "Tester specialist",
+      "status": "idle",
+      "modelId": "agentchat",
+      "secondaryModelId": null,
+      "skills": [
+        "tester"
+      ],
+      "source": "registry",
+      "updatedAt": "2026-09-30T20:26:05.262Z",
+      "avatar": null,
+      "roleTag": "Tester",
+      "initials": "PA",
+      "isChief": false,
+      "currentTask": "Ready for group chat",
+      "routePref": null,
+      "reportsTo": null
+    },
+    {
+      "id": "hiretest-4100",
+      "name": "HireTest 4100",
+      "role": "coding",
+      "status": "idle",
+      "modelId": "ollama:qwen2.5-coder:1.5b-base",
+      "secondaryModelId": "ollama:jikepjikep_16HEX/gemma-4-4b-nightshift-heretic-uncensored-q6:latest",
+      "skills": [
+        "code-review",
+        "shell-sandbox"
+      ],
+      "source": "registry",
+      "updatedAt": "2026-10-01T08:40:26.527Z",
+      "avatar": null,
+      "roleTag": "Build",
+      "initials": "H4",
+      "isChief": false,
+      "currentTask": "review PRs and write tests",
+      "routePref": null,
+      "reportsTo": null
+    },
+    {
+      "id": "nova",
+      "name": "Nova",
+      "role": "Travel",
+      "status": "idle",
+      "modelId": "ollama:qwen2.5-coder:1.5b-base",
+      "secondaryModelId": "ollama:jikepjikep_16HEX/gemma-4-4b-nightshift-heretic-uncensored-q6:latest",
+      "skills": [
+        "travel"
+      ],
+      "source": "registry",
+      "updatedAt": "2026-10-01T08:40:37.947Z",
+      "avatar": null,
+      "roleTag": "Travel",
+      "initials": "NO",
+      "isChief": false,
+      "currentTask": "plan trips and bookings",
+      "routePref": null,
+      "reportsTo": null
+    },
+    {
+      "id": "offlinehire-853",
+      "name": "OfflineHire 853",
+      "role": "research",
+      "status": "idle",
+      "modelId": "agentchat",
+      "secondaryModelId": null,
+      "skills": [
+        "lit-review",
+        "literature",
+        "citations"
+      ],
+      "source": "registry",
+      "updatedAt": "2026-10-01T08:40:38.214Z",
+      "avatar": null,
+      "roleTag": "Find",
+      "initials": "O8",
+      "isChief": false,
+      "currentTask": "literature review",
+      "routePref": null,
+      "reportsTo": null
+    }
+  ],
+  "lastScanAt": "2026-10-01T11:03:16.074Z"
+}

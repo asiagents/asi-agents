@@ -1,0 +1,5 @@
+{
+  "_doc": "Example body for GET http://127.0.0.1:7821/v1/models (OpenAI-compatible list).",
+  "object": "list",
+  "data": []
+}

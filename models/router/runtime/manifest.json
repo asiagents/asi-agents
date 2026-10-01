@@ -1,0 +1,18 @@
+{
+  "module": "asi-router",
+  "displayName": "SLM Router",
+  "stubLane": "P1-E",
+  "parallelBuildAgent": 8,
+  "controlUrl": "http://127.0.0.1:7821",
+  "healthPath": "/health",
+  "modelsPath": "/v1/models",
+  "chatCompletionsPath": "/v1/chat/completions",
+  "unloadPath": "/admin/unload",
+  "modelsDirs": ["../custom", "."],
+  "policy": "MVP: reference proxy (index.mjs) ships in-repo. npm run start:router from repo root. Artifacts ≠ live — only GET /health on :7821 marks live.",
+  "placeholders": {
+    "health": "health/response.placeholder.json",
+    "registryRow": "registry/services-row.placeholder.json",
+    "modelsList": "registry/v1-models.placeholder.json"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "app": {
+    "name": "ASI Agents",
+    "tagline": "Local-first multi-agent desk · 1234tech college demo persona",
+    "defaultMode": "simple"
+  },
+  "modes": {
+    "simple": {
+      "id": "simple",
+      "label": "Simple",
+      "description": "Flat org with Chief · minimal chrome · Pi-class friendly",
+      "shell": "plain-web-or-minimal-native",
+      "virtualComputer": false
+    },
+    "single": {
+      "id": "single",
+      "label": "Single",
+      "description": "One primary agent thread · visible handoffs · optional agent specialists",
+      "shell": "react-shell",
+      "virtualComputer": false
+    },
+    "multi": {
+      "id": "multi",
+      "label": "Multi",
+      "description": "Council board · group decide · inbox approvals",
+      "shell": "react-shell",
+      "virtualComputer": "optional"
+    }
+  },
+  "models": {
+    "catalog": [
+      {
+        "id": "ams-micro-70m",
+        "title": "ASI AMS Micro 70M",
+        "subline": "Local router · on-device (default)",
+        "tier": "router",
+        "default": true
+      },
+      {
+        "id": "ams-hybrid-120m",
+        "title": "ASI AMS Hybrid 120M",
+        "subline": "Local router · optional",
+        "tier": "router",
+        "default": false
+      },
+      {
+        "id": "ultra-gate-1m",
+        "title": "Ultra gate ~1M",
+        "subline": "Edge toy · not ship brain",
+        "tier": "gate",
+        "default": false
+      },
+      {
+        "id": "agent-chat-50-100m",
+        "title": "ASI AMS Agent Chat (~50–100M)",
+        "subline": "Short replies · optional",
+        "tier": "agent",
+        "default": false
+      },
+      {
+        "id": "chat-1b",
+        "title": "Chat 1B",
+        "subline": "Escalate · off-device",
+        "tier": "escalate",
+        "default": false
+      },
+      {
+        "id": "chat-3b",
+        "title": "Chat 3B",
+        "subline": "Escalate · off-device",
+        "tier": "escalate",
+        "default": false
+      },
+      {
+        "id": "cloud-model",
+        "title": "Cloud model",
+        "subline": "Escalate · user-approved",
+        "tier": "cloud",
+        "default": false
+      }
+    ],
+    "states": {
+      "pending": {
+        "title": "Model pending",
+        "subline": "Weights or router not ready"
+      },
+      "offline": {
+        "title": "Model offline",
+        "subline": "Service unreachable · fail closed"
+      }
+    },
+    "dropInDirs": {
+      "ams": "models/ams/",
+      "custom": "models/custom/",
+      "router": "models/router/"
+    },
+    "legacyShowcaseIds": {
+      "showcase-70m": "ams-micro-70m",
+      "showcase-132m": "ams-hybrid-120m"
+    }
+  },
+  "safety": {
+    "failClosed": true,
+    "draftFirstOutbound": true,
+    "controlLogSurvivesAgentDelete": true
+  },
+  "modules": {
+    "virtualComputer": {
+      "enabled": false,
+      "label": "Virtual Computer",
+      "externalDeskPath": "",
+      "note": "Optional plug-in only — never MVP gate"
+    }
+  },
+  "voice": {
+    "default": {
+      "provider": "local",
+      "label": "Local TTS / system voice",
+      "optional": false
+    },
+    "elevenLabs": {
+      "provider": "elevenlabs",
+      "label": "ElevenLabs",
+      "optional": true,
+      "apiKeyEnv": "ELEVENLABS_API_KEY"
+    }
+  }
+}

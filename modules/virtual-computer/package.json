@@ -1,0 +1,29 @@
+{
+  "name": "@asi-agents/virtual-computer",
+  "version": "0.1.0-mvp",
+  "private": true,
+  "type": "module",
+  "main": "./dist/routes.js",
+  "types": "./dist/routes.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/routes.d.ts",
+      "import": "./dist/routes.js"
+    },
+    "./probe": {
+      "types": "./dist/probe.d.ts",
+      "import": "./dist/probe.js"
+    },
+    "./ui/VirtualComputerPanel": "./ui/VirtualComputerPanel.tsx"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "typescript": "^5.7.2"
+  }
+}

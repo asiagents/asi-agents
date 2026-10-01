@@ -1,0 +1,10 @@
+{
+  "_doc": "Row shape merged into %LOCALAPPDATA%/ASI Agents/services.json (see docs/local-services-registry.md).",
+  "id": "asi-router",
+  "name": "SLM Router",
+  "baseUrl": "http://127.0.0.1:7821",
+  "healthPath": "/health",
+  "kind": "router",
+  "status": "off",
+  "controls": { "restart": true, "clearRam": true }
+}

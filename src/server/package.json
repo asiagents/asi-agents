@@ -1,0 +1,28 @@
+{
+  "name": "@asi-agents/server",
+  "version": "0.1.0-mvp",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "test:intent": "tsx src/intent/match.test.ts && tsx src/intent/fanOut.test.ts && tsx src/intent/renameDisplay.test.ts && tsx src/intent/simpleArithmetic.test.ts"
+  },
+  "dependencies": {
+    "@asi-agents/games": "0.1.0-mvp",
+    "@asi-agents/postgres-store": "0.1.0-mvp",
+    "@asi-agents/virtual-computer": "0.1.0-mvp",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "imapflow": "^1.7.8",
+    "nodemailer": "^10.0.13"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.2",
+    "@types/nodemailer": "^8.0.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

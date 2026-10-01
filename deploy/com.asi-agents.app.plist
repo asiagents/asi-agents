@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.asi-agents.app</string>
+  <key>WorkingDirectory</key>
+  <string>/Users/YOU/asi-agents</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/local/bin/npm</string>
+    <string>run</string>
+    <string>start</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>NODE_ENV</key>
+    <string>production</string>
+    <key>ASI_AMS_SKILL_RUN</key>
+    <string>0</string>
+    <key>ASI_USE_POSTGRES</key>
+    <string>0</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/tmp/asi-agents.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/asi-agents.err.log</string>
+</dict>
+</plist>

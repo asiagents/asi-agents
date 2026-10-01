@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "label": "Recommended local tools (install on your machine — not bundled with ASI Agents)",
+  "tools": [
+    {
+      "id": "ollama",
+      "name": "Ollama",
+      "category": "runtime",
+      "summary": "Pull and run open models (llama, qwen, mistral, whisper, llava).",
+      "installUrl": "https://ollama.com/download",
+      "docsUrl": "https://github.com/ollama/ollama/blob/main/docs/api.md",
+      "verifyCommand": "ollama list"
+    },
+    {
+      "id": "llama-cpp",
+      "name": "llama.cpp server",
+      "category": "runtime",
+      "summary": "OpenAI-compatible local server for GGUF in models/custom.",
+      "installUrl": "https://github.com/ggerganov/llama.cpp",
+      "docsUrl": "https://github.com/ggerganov/llama.cpp/blob/master/examples/server/README.md",
+      "verifyCommand": "curl http://127.0.0.1:8080/v1/models"
+    },
+    {
+      "id": "hf-cli",
+      "name": "Hugging Face CLI",
+      "category": "download",
+      "summary": "Download GGUF or weights: huggingface-cli download …",
+      "installUrl": "https://huggingface.co/docs/huggingface_hub/guides/cli",
+      "docsUrl": "https://huggingface.co/docs/huggingface_hub/guides/download",
+      "verifyCommand": "huggingface-cli --help"
+    },
+    {
+      "id": "docling",
+      "name": "Docling",
+      "category": "documents",
+      "summary": "PDF and office parsing to structured text.",
+      "installUrl": "https://github.com/docling-project/docling",
+      "command": "pip install docling"
+    },
+    {
+      "id": "marker",
+      "name": "Marker",
+      "category": "documents",
+      "summary": "PDF → markdown with layout.",
+      "installUrl": "https://github.com/VikParuchuri/marker"
+    },
+    {
+      "id": "tesseract",
+      "name": "Tesseract OCR",
+      "category": "ocr",
+      "summary": "Classic OCR for scanned pages.",
+      "installUrl": "https://github.com/tesseract-ocr/tesseract",
+      "command": "pip install pytesseract pillow"
+    }
+  ]
+}

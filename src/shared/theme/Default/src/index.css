@@ -1,0 +1,367 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+@import '../../product-theme.css';
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background: rgb(var(--bg));
+  color: rgb(var(--ink));
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--line)) transparent;
+}
+:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 2px;
+}
+/* Idle loop for agent avatars (stands in for GIF loops when no GIF is provided) */
+@keyframes idle-bob {
+  0%,
+  100% {
+    transform: translateY(0) scale(1.06);
+  }
+  50% {
+    transform: translateY(-3%) scale(1.09);
+  }
+}
+.idle-loop {
+  animation: idle-bob 3.2s ease-in-out infinite;
+  transform-origin: 50% 80%;
+}
+.idle-loop-slow {
+  animation: idle-bob 5.5s ease-in-out infinite;
+  transform-origin: 50% 80%;
+}
+/* Models → neural map flow */
+@keyframes map-dash {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+.map-flow {
+  animation: map-dash 0.9s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .map-flow {
+    animation: none;
+  }
+}
+/* Office desks: busy loop + typing lines on the mini monitor */
+@keyframes work-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1.06);
+  }
+  25% {
+    transform: translateY(-2%) rotate(-1.5deg) scale(1.07);
+  }
+  75% {
+    transform: translateY(-1%) rotate(1.5deg) scale(1.07);
+  }
+}
+.work-loop {
+  animation: work-bob 1.4s ease-in-out infinite;
+  transform-origin: 50% 85%;
+}
+@keyframes type-line {
+  0% {
+    transform: scaleX(0.1);
+  }
+  70%,
+  100% {
+    transform: scaleX(1);
+  }
+}
+.type-line {
+  transform-origin: left center;
+  animation: type-line 1.8s steps(8, end) infinite;
+}
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+.plant-sway {
+  transform-origin: 50% 100%;
+  animation: sway 4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .idle-loop,
+  .idle-loop-slow,
+  .work-loop,
+  .type-line,
+  .plant-sway,
+  .flame-flicker,
+  .flame-breathe,
+  .speaking-ripple {
+    animation: none;
+  }
+}
+
+/* Pixar Firehead Character Animations */
+@keyframes flame-flicker-anim {
+  0%, 100% {
+    transform: translateY(0) scaleY(1) scaleX(1) rotate(0deg);
+    filter: drop-shadow(0 0 12px currentColor);
+  }
+  20% {
+    transform: translateY(-2px) scaleY(1.08) scaleX(0.96) rotate(-2deg);
+    filter: drop-shadow(0 0 16px currentColor);
+  }
+  40% {
+    transform: translateY(1px) scaleY(0.95) scaleX(1.04) rotate(2deg);
+    filter: drop-shadow(0 0 10px currentColor);
+  }
+  60% {
+    transform: translateY(-3px) scaleY(1.1) scaleX(0.94) rotate(-1deg);
+    filter: drop-shadow(0 0 18px currentColor);
+  }
+  80% {
+    transform: translateY(0.5px) scaleY(0.98) scaleX(1.02) rotate(1deg);
+    filter: drop-shadow(0 0 14px currentColor);
+  }
+}
+
+@keyframes flame-breathe-anim {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+  50% {
+    transform: translateY(-1.5px) scale(1.04);
+    filter: drop-shadow(0 0 14px currentColor);
+  }
+}
+
+@keyframes speaking-ripple-anim {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+.flame-flicker {
+  animation: flame-flicker-anim 1.2s ease-in-out infinite;
+}
+
+.flame-breathe {
+  animation: flame-breathe-anim 3.6s ease-in-out infinite;
+}
+
+.speaking-ripple {
+  animation: speaking-ripple-anim 1.8s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+/* Header Local / Online status LEDs — slow breath, limited glow */
+@keyframes status-led-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    box-shadow: 0 0 0 0 transparent;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 6px 1px var(--led-glow, transparent);
+    transform: scale(1.08);
+  }
+}
+
+.status-led {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: rgb(var(--faint));
+}
+
+.status-led--off {
+  opacity: 0.45;
+  background: rgb(var(--faint));
+}
+
+.status-led--on {
+  animation: status-led-breathe 3.6s ease-in-out infinite;
+}
+
+.status-led--local {
+  --led-glow: rgb(var(--accent) / 0.45);
+  background: rgb(var(--accent));
+}
+
+.status-led--online {
+  --led-glow: rgb(var(--success) / 0.4);
+  background: rgb(var(--success));
+}
+
+.status-led--warn {
+  --led-glow: rgb(var(--warn) / 0.4);
+  background: rgb(var(--warn));
+}
+
+.status-led--danger {
+  --led-glow: rgb(var(--danger) / 0.4);
+  background: rgb(var(--danger));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-led--on {
+    animation: none;
+    opacity: 0.9;
+    box-shadow: 0 0 3px 0 var(--led-glow, transparent);
+    transform: none;
+  }
+}
+
+/* Squari Companion — corner overlay (prod off by default; test bed on when unset) */
+@keyframes asi-squari-jump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(-12px);
+  }
+  55% {
+    transform: translateY(-3px);
+  }
+}
+
+/* PNG fallback bob (±12px) when GIF unavailable — GIFs already include bob. */
+@keyframes asi-companion-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.asi-squari--jump .asi-squari-sprite {
+  animation: asi-squari-jump 0.9s ease-in-out;
+}
+
+.asi-squari--bob .asi-squari-sprite {
+  animation: asi-companion-bob 1.6s ease-in-out infinite;
+}
+
+.asi-squari-hub-panel {
+  box-shadow:
+    0 24px 80px rgb(0 0 0 / 0.28),
+    0 2px 0 rgb(255 255 255 / 0.06) inset;
+}
+
+.asi-squari-todo-row:hover {
+  background: rgb(var(--overlay) / 0.06);
+}
+
+.asi-squari-todo-row:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: -2px;
+}
+
+.asi-squari-pip--work {
+  box-shadow: 0 0 0 0 rgb(var(--accent) / 0.55);
+  animation: asi-squari-pip-pulse 1.6s ease-out infinite;
+}
+
+.asi-squari-pip--urgent {
+  box-shadow: 0 0 0 0 rgb(220 38 38 / 0.55);
+  animation: asi-squari-pip-pulse 1.1s ease-out infinite;
+}
+
+@keyframes asi-squari-pip-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(0 0 0 / 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgb(0 0 0 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(0 0 0 / 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asi-squari--jump .asi-squari-sprite,
+  .asi-squari--bob .asi-squari-sprite,
+  .asi-squari-pip--work,
+  .asi-squari-pip--urgent {
+    animation: none;
+  }
+}
+
+/* Neural brain widget — transparent SVG pulse */
+@keyframes asi-neural-node-pulse {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes asi-neural-link-flow {
+  0%,
+  100% {
+    stroke-opacity: 0.28;
+  }
+  50% {
+    stroke-opacity: 0.55;
+  }
+}
+
+.asi-neural-brain {
+  background: transparent;
+}
+
+.asi-neural-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: asi-neural-node-pulse 3.2s ease-in-out infinite;
+}
+
+.asi-neural-link {
+  animation: asi-neural-link-flow 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asi-neural-node,
+  .asi-neural-link {
+    animation: none;
+  }
+}
+
+

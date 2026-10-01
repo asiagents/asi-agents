@@ -1,0 +1,643 @@
+{
+  "version": 1,
+  "label": "AMS Pro skills catalog",
+  "skills": [
+    {
+      "id": "triage-notes",
+      "name": "Triage notes",
+      "group": "Health"
+    },
+    {
+      "id": "dosage-check",
+      "name": "Dosage check",
+      "group": "Health"
+    },
+    {
+      "id": "claims-coding",
+      "name": "Claims coding",
+      "group": "Health"
+    },
+    {
+      "id": "budgeting",
+      "name": "Budgeting",
+      "group": "Money"
+    },
+    {
+      "id": "spend-gates",
+      "name": "Spend gates",
+      "group": "Money"
+    },
+    {
+      "id": "forecasting",
+      "name": "Forecasting",
+      "group": "Money"
+    },
+    {
+      "id": "tax-prep",
+      "name": "Tax prep",
+      "group": "Money"
+    },
+    {
+      "id": "contract-review",
+      "name": "Contract review",
+      "group": "Legal"
+    },
+    {
+      "id": "case-law",
+      "name": "Case-law search",
+      "group": "Legal"
+    },
+    {
+      "id": "citations",
+      "name": "Citations",
+      "group": "Research"
+    },
+    {
+      "id": "web-browsing",
+      "name": "Web browsing",
+      "group": "Research",
+      "description": "Live page fetch/search via Virtual Desk browser tools (:3456). Use when Desk is online; fail-closed to model knowledge when offline.",
+      "systemPrompt": "You have the Web browsing skill. Prefer Virtual Desk browser tools for live page evidence when available. Never invent URLs or claim you browsed pages you did not receive. If Desk is offline, say so and use model knowledge with an honest disclaimer."
+    },
+    {
+      "id": "lit-review",
+      "name": "Literature review",
+      "group": "Research"
+    },
+    {
+      "id": "literature",
+      "name": "Literature search",
+      "group": "Research"
+    },
+    {
+      "id": "stats",
+      "name": "Statistics",
+      "group": "Research"
+    },
+    {
+      "id": "data-cleaning",
+      "name": "Data cleaning",
+      "group": "Research"
+    },
+    {
+      "id": "lesson-plans",
+      "name": "Lesson plans",
+      "group": "Teaching"
+    },
+    {
+      "id": "quiz-gen",
+      "name": "Quiz builder",
+      "group": "Teaching"
+    },
+    {
+      "id": "code-review",
+      "name": "Code review",
+      "group": "Build"
+    },
+    {
+      "id": "test-writing",
+      "name": "Test writing",
+      "group": "Build"
+    },
+    {
+      "id": "shell-sandbox",
+      "name": "Shell (sandbox)",
+      "group": "Build"
+    },
+    {
+      "id": "ui-mockups",
+      "name": "UI mockups",
+      "group": "Create"
+    },
+    {
+      "id": "slides",
+      "name": "Slides & decks",
+      "group": "Create"
+    },
+    {
+      "id": "brand-voice",
+      "name": "Brand voice",
+      "group": "Create"
+    },
+    {
+      "id": "story",
+      "name": "Story drafting",
+      "group": "Create"
+    },
+    {
+      "id": "lore",
+      "name": "Lore building",
+      "group": "Create"
+    },
+    {
+      "id": "seo",
+      "name": "SEO audit",
+      "group": "Grow"
+    },
+    {
+      "id": "scheduling",
+      "name": "Scheduling",
+      "group": "Ops"
+    },
+    {
+      "id": "mail-triage",
+      "name": "Mail triage",
+      "group": "Ops"
+    },
+    {
+      "id": "travel",
+      "name": "Travel planning",
+      "group": "Life"
+    },
+    {
+      "id": "patient-intake",
+      "name": "Patient intake",
+      "group": "Health"
+    },
+    {
+      "id": "prior-auth",
+      "name": "Prior authorization",
+      "group": "Health"
+    },
+    {
+      "id": "care-plans",
+      "name": "Care plans",
+      "group": "Health"
+    },
+    {
+      "id": "lab-interpret",
+      "name": "Lab interpretation",
+      "group": "Health"
+    },
+    {
+      "id": "hipaa-review",
+      "name": "HIPAA review",
+      "group": "Health"
+    },
+    {
+      "id": "telehealth-prep",
+      "name": "Telehealth prep",
+      "group": "Health"
+    },
+    {
+      "id": "symptom-triage",
+      "name": "Symptom triage",
+      "group": "Health"
+    },
+    {
+      "id": "invoicing",
+      "name": "Invoicing",
+      "group": "Money"
+    },
+    {
+      "id": "payroll",
+      "name": "Payroll",
+      "group": "Money"
+    },
+    {
+      "id": "expense-audit",
+      "name": "Expense audit",
+      "group": "Money"
+    },
+    {
+      "id": "portfolio-review",
+      "name": "Portfolio review",
+      "group": "Money"
+    },
+    {
+      "id": "wire-prep",
+      "name": "Wire prep",
+      "group": "Money"
+    },
+    {
+      "id": "crypto-tax",
+      "name": "Crypto tax",
+      "group": "Money"
+    },
+    {
+      "id": "cash-flow",
+      "name": "Cash flow",
+      "group": "Money"
+    },
+    {
+      "id": "nda-draft",
+      "name": "NDA draft",
+      "group": "Legal"
+    },
+    {
+      "id": "patent-search",
+      "name": "Patent search",
+      "group": "Legal"
+    },
+    {
+      "id": "gdpr-check",
+      "name": "GDPR check",
+      "group": "Legal"
+    },
+    {
+      "id": "deposition-prep",
+      "name": "Deposition prep",
+      "group": "Legal"
+    },
+    {
+      "id": "clause-library",
+      "name": "Clause library",
+      "group": "Legal"
+    },
+    {
+      "id": "ip-licensing",
+      "name": "IP licensing",
+      "group": "Legal"
+    },
+    {
+      "id": "legal-hold",
+      "name": "Legal hold",
+      "group": "Legal"
+    },
+    {
+      "id": "meta-analysis",
+      "name": "Meta-analysis",
+      "group": "Research"
+    },
+    {
+      "id": "survey-design",
+      "name": "Survey design",
+      "group": "Research"
+    },
+    {
+      "id": "peer-review",
+      "name": "Peer review",
+      "group": "Research"
+    },
+    {
+      "id": "grant-research",
+      "name": "Grant research",
+      "group": "Research"
+    },
+    {
+      "id": "dataset-catalog",
+      "name": "Dataset catalog",
+      "group": "Research"
+    },
+    {
+      "id": "hypothesis-map",
+      "name": "Hypothesis map",
+      "group": "Research"
+    },
+    {
+      "id": "rubric-design",
+      "name": "Rubric design",
+      "group": "Teaching"
+    },
+    {
+      "id": "syllabus-map",
+      "name": "Syllabus map",
+      "group": "Teaching"
+    },
+    {
+      "id": "feedback-loops",
+      "name": "Feedback loops",
+      "group": "Teaching"
+    },
+    {
+      "id": "a11y-lessons",
+      "name": "Accessibility lessons",
+      "group": "Teaching"
+    },
+    {
+      "id": "lms-export",
+      "name": "LMS export",
+      "group": "Teaching"
+    },
+    {
+      "id": "office-hours",
+      "name": "Office hours prep",
+      "group": "Teaching"
+    },
+    {
+      "id": "ci-pipeline",
+      "name": "CI pipeline",
+      "group": "Build"
+    },
+    {
+      "id": "dependency-audit",
+      "name": "Dependency audit",
+      "group": "Build"
+    },
+    {
+      "id": "api-design",
+      "name": "API design",
+      "group": "Build"
+    },
+    {
+      "id": "refactor-plan",
+      "name": "Refactor plan",
+      "group": "Build"
+    },
+    {
+      "id": "perf-profiling",
+      "name": "Performance profiling",
+      "group": "Build"
+    },
+    {
+      "id": "release-notes",
+      "name": "Release notes",
+      "group": "Build"
+    },
+    {
+      "id": "incident-runbook",
+      "name": "Incident runbook",
+      "group": "Build"
+    },
+    {
+      "id": "video-outline",
+      "name": "Video outline",
+      "group": "Create"
+    },
+    {
+      "id": "podcast-script",
+      "name": "Podcast script",
+      "group": "Create"
+    },
+    {
+      "id": "thumbnail-brief",
+      "name": "Thumbnail brief",
+      "group": "Create"
+    },
+    {
+      "id": "copy-deck",
+      "name": "Copy deck",
+      "group": "Create"
+    },
+    {
+      "id": "color-palette",
+      "name": "Color palette",
+      "group": "Create"
+    },
+    {
+      "id": "icon-brief",
+      "name": "Icon brief",
+      "group": "Create"
+    },
+    {
+      "id": "ads-copy",
+      "name": "Ads copy",
+      "group": "Grow"
+    },
+    {
+      "id": "funnel-map",
+      "name": "Funnel map",
+      "group": "Grow"
+    },
+    {
+      "id": "crm-hygiene",
+      "name": "CRM hygiene",
+      "group": "Grow"
+    },
+    {
+      "id": "landing-audit",
+      "name": "Landing audit",
+      "group": "Grow"
+    },
+    {
+      "id": "email-sequence",
+      "name": "Email sequence",
+      "group": "Grow"
+    },
+    {
+      "id": "social-calendar",
+      "name": "Social calendar",
+      "group": "Grow"
+    },
+    {
+      "id": "competitor-scan",
+      "name": "Competitor scan",
+      "group": "Grow"
+    },
+    {
+      "id": "pricing-page",
+      "name": "Pricing page",
+      "group": "Grow"
+    },
+    {
+      "id": "inventory-count",
+      "name": "Inventory count",
+      "group": "Ops"
+    },
+    {
+      "id": "vendor-rfp",
+      "name": "Vendor RFP",
+      "group": "Ops"
+    },
+    {
+      "id": "sop-writer",
+      "name": "SOP writer",
+      "group": "Ops"
+    },
+    {
+      "id": "shift-handoff",
+      "name": "Shift handoff",
+      "group": "Ops"
+    },
+    {
+      "id": "ticketing-triage",
+      "name": "Ticketing triage",
+      "group": "Ops"
+    },
+    {
+      "id": "asset-track",
+      "name": "Asset tracking",
+      "group": "Ops"
+    },
+    {
+      "id": "facilities-request",
+      "name": "Facilities request",
+      "group": "Ops"
+    },
+    {
+      "id": "meal-plan",
+      "name": "Meal planning",
+      "group": "Life"
+    },
+    {
+      "id": "fitness-log",
+      "name": "Fitness log",
+      "group": "Life"
+    },
+    {
+      "id": "habit-track",
+      "name": "Habit tracking",
+      "group": "Life"
+    },
+    {
+      "id": "calendar-block",
+      "name": "Calendar blocking",
+      "group": "Life"
+    },
+    {
+      "id": "home-maintenance",
+      "name": "Home maintenance",
+      "group": "Life"
+    },
+    {
+      "id": "event-plan",
+      "name": "Event planning",
+      "group": "Life"
+    },
+    {
+      "id": "relocation-checklist",
+      "name": "Relocation checklist",
+      "group": "Life"
+    },
+    {
+      "id": "threat-model",
+      "name": "Threat modeling",
+      "group": "Security"
+    },
+    {
+      "id": "secret-rotate",
+      "name": "Secret rotation",
+      "group": "Security"
+    },
+    {
+      "id": "access-review",
+      "name": "Access review",
+      "group": "Security"
+    },
+    {
+      "id": "phishing-sim",
+      "name": "Phishing simulation",
+      "group": "Security"
+    },
+    {
+      "id": "vuln-triage",
+      "name": "Vulnerability triage",
+      "group": "Security"
+    },
+    {
+      "id": "discovery-call",
+      "name": "Discovery call",
+      "group": "Sales"
+    },
+    {
+      "id": "proposal-draft",
+      "name": "Proposal draft",
+      "group": "Sales"
+    },
+    {
+      "id": "objection-handle",
+      "name": "Objection handling",
+      "group": "Sales"
+    },
+    {
+      "id": "demo-script",
+      "name": "Demo script",
+      "group": "Sales"
+    },
+    {
+      "id": "renewal-risk",
+      "name": "Renewal risk",
+      "group": "Sales"
+    },
+    {
+      "id": "job-desc",
+      "name": "Job description",
+      "group": "HR"
+    },
+    {
+      "id": "interview-kit",
+      "name": "Interview kit",
+      "group": "HR"
+    },
+    {
+      "id": "onboarding-pack",
+      "name": "Onboarding pack",
+      "group": "HR"
+    },
+    {
+      "id": "perf-review",
+      "name": "Performance review",
+      "group": "HR"
+    },
+    {
+      "id": "policy-draft",
+      "name": "Policy draft",
+      "group": "HR"
+    },
+    {
+      "id": "etl-spec",
+      "name": "ETL spec",
+      "group": "Data"
+    },
+    {
+      "id": "warehouse-map",
+      "name": "Warehouse map",
+      "group": "Data"
+    },
+    {
+      "id": "dashboard-spec",
+      "name": "Dashboard spec",
+      "group": "Data"
+    },
+    {
+      "id": "anomaly-flag",
+      "name": "Anomaly flagging",
+      "group": "Data"
+    },
+    {
+      "id": "sql-review",
+      "name": "SQL review",
+      "group": "Data"
+    },
+    {
+      "id": "ticket-summarize",
+      "name": "Ticket summarize",
+      "group": "Support"
+    },
+    {
+      "id": "kb-article",
+      "name": "KB article",
+      "group": "Support"
+    },
+    {
+      "id": "escalation-brief",
+      "name": "Escalation brief",
+      "group": "Support"
+    },
+    {
+      "id": "csat-reply",
+      "name": "CSAT reply",
+      "group": "Support"
+    },
+    {
+      "id": "macro-library",
+      "name": "Macro library",
+      "group": "Support"
+    },
+    {
+      "id": "transcript-edit",
+      "name": "Transcript edit",
+      "group": "Media"
+    },
+    {
+      "id": "subtitle-qc",
+      "name": "Subtitle QC",
+      "group": "Media"
+    },
+    {
+      "id": "asset-metadata",
+      "name": "Asset metadata",
+      "group": "Media"
+    },
+    {
+      "id": "compression-guide",
+      "name": "Compression guide",
+      "group": "Media"
+    },
+    {
+      "id": "rights-check",
+      "name": "Rights check",
+      "group": "Media"
+    }
+  ]
+}

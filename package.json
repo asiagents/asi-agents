@@ -1,0 +1,34 @@
+{
+  "name": "asi-agents",
+  "private": true,
+  "version": "0.1.0-mvp",
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev:server\" \"npm run dev:app\"",
+    "dev:server": "npm run dev -w @asi-agents/server",
+    "dev:app": "npm run dev -w @asi-agents/app",
+    "start:router": "node scripts/start-router.mjs",
+    "dev:router": "node scripts/start-router.mjs",
+    "install:ams": "node scripts/install-ams-models.mjs",
+    "verify:ams": "node scripts/verify-ams-gguf.mjs",
+    "asi": "node scripts/asi.mjs",
+    "export:research-preview": "node scripts/export-research-preview.mjs",
+    "export:corp-prerelease": "node scripts/export-corp-prerelease.mjs",
+    "build": "npm run build -w @asi-agents/virtual-computer && npm run build -w @asi-agents/games && npm run build -w @asi-agents/postgres-store && npm run build -w @asi-agents/server && npm run build -w @asi-agents/app",
+    "build:all": "npm run build",
+    "start": "npm run start -w @asi-agents/server",
+    "pull:models": "node -e \"console.log('Use scripts/pull-models.cmd on Windows')\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "src/app",
+    "src/server",
+    "modules/virtual-computer",
+    "modules/postgres-store"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

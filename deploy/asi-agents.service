@@ -1,0 +1,17 @@
+[Unit]
+Description=ASI Agents (API + UI on :3445)
+After=network.target
+
+[Service]
+Type=simple
+User=asi
+WorkingDirectory=/opt/asi-agents
+Environment=NODE_ENV=production
+Environment=ASI_AMS_SKILL_RUN=0
+Environment=ASI_USE_POSTGRES=0
+ExecStart=/usr/bin/npm run start
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

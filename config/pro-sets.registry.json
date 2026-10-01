@@ -1,0 +1,16 @@
+{
+  "sets": [
+    { "id": "health", "name": "Healthcare", "agentIds": ["p-mira", "p-pharm", "p-claims"] },
+    { "id": "finance", "name": "Finance", "agentIds": ["p-ledger", "p-forecast", "p-taxie", "p-audit"] },
+    { "id": "legal", "name": "Legal", "agentIds": ["p-counsel", "p-clerk", "p-comply"] },
+    { "id": "education", "name": "Education", "agentIds": ["p-hoot", "p-quiz", "p-syllabus"] },
+    { "id": "software", "name": "Software", "agentIds": ["p-coder", "p-review", "p-qa", "p-drake"] },
+    { "id": "design", "name": "Design", "agentIds": ["p-pixel", "p-brand", "p-motion"] },
+    { "id": "marketing", "name": "Marketing", "agentIds": ["p-reach", "p-copy", "p-social"] },
+    { "id": "science", "name": "Science", "agentIds": ["p-lab", "p-stats", "p-lit", "p-grant"] },
+    { "id": "ops", "name": "Operations", "agentIds": ["p-dispatch", "p-mail", "p-keeper"] },
+    { "id": "creative", "name": "Creative writing", "agentIds": ["p-quill", "p-voice", "p-editor"] },
+    { "id": "fantasy", "name": "Fantasy & games", "agentIds": ["p-ember", "p-sage", "p-level", "p-play"] },
+    { "id": "personal", "name": "Personal life", "agentIds": ["p-coach", "p-nomad", "p-buddy"] }
+  ]
+}

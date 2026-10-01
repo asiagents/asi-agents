@@ -1,71 +1,85 @@
 <div align="center">
-
-# ASI Agents
-
-### Local-first desktop AI · Chief + agents on your machine
-
-**Research preview** · **v0.1 Pre Release** · Port **3445** · Snapdragon X ready
+ASI Agents
+Local-first multi-agent desk · research preview
+<img src="docs/assets/team-icon.gif" alt="ASI Agents team" width="200" />
+v0.1 Pre Release · Port 3445 · Snapdragon X ready · Apache-2.0
 
 </div>
+<p align="center"> <img src="docs/assets/team-boardroom.jpg" alt="ASI Agents — intelligence that works as one" width="48%" /> &nbsp; <img src="docs/assets/team-campus-night.jpg" alt="ASI Agents campus · Virtual Desktop" width="48%" /> </p> <p align="center"><em>Chief · specialists · skills · Virtual Desktop — and the path toward wearable + companion display.</em></p>
+A note from the researcher
+I’m an AI researcher shipping this as a pre-release of ASI Agents — a local-first multi-agent desk I’m building and testing in the open.
 
----
+The goal isn’t another chat demo. It’s a next-generation agent suite you can run beside you: a Chief, specialists with skills, honest approvals, and an on-device AMS intent router — then escalate to local chat or cloud only when the route needs it.
 
-<p align="center">
-  <img src="docs/screenshots/01-home.png" alt="ASI Agents home" width="720" />
-</p>
+I’m also building toward the associated tools that make that suite feel real in daily life — especially a focused wearable path and a companion display (Squari / Companion in this build) so the desk isn’t trapped in one window forever.
 
-Welcome! **ASI Agents** is a local-first app for running work like an executive office — a **Chief of staff** and agents that stay private by default. Local models when you want them, cloud only when you opt in. **No account required to start.**
+This repo is that stake in the ground. APIs and UI will move. Stars, issues, and sharp notes help. Please don’t strip the license or claim the work as your own.
 
-This package is a **v0.1 Pre Release** for GitHub upload and Snapdragon deploy. APIs and UI may change — explore kindly.
+— V Varghese · @asiagents · 2026
 
-> **First run?** Double-click **`start-asi.cmd`**, then open http://127.0.0.1:3445
+Stack at a glance
 
-## Getting started
+  You
+   │
+   ▼
+ AMS on-device router   (Micro 70M default · Hybrid 120M optional — ONNX in models/ams/)
+   │
+   ▼
+ ASI Agents desk        (Super · Multi · Pro · skills · approvals · Panic)
+   │
+   ▼
+ Virtual Desktop        (apps · browser · files)
+   │
+   ▼
+ Companion / wearable   (companion display on now; wearable track next)
+Getting started
+First run? Double-click start-asi.cmd, then open http://127.0.0.1:3445
 
-**One click (Windows / Snapdragon):** double-click **`start-asi.cmd`** (setup + build on first run).
+One click (Windows / Snapdragon): start-asi.cmd (setup + build on first run).
 
-**Or three commands** (Node **20+**; prefer **ARM64** on Snapdragon X / Galaxy Book4):
+Or three commands (Node 20+; prefer ARM64 on Snapdragon X / Galaxy Book):
 
-```powershell
+
 npm.cmd run setup
 npm.cmd run build
 npm.cmd run start
-```
+Models in this package
+File	Role
+models/ams/ams-micro-70m.onnx	Default on-device intent router (~70M brand)
+models/ams/ams-hybrid-120m.onnx	Optional richer router (~120M brand)
+Verify: npm run verify:ams. Optional chat models: .\scripts\pull-models.cmd. Without a chat backend, Chief returns 503 (fail-closed).
 
-**AMS weights** ship inside this package: `models/ams/ams-micro-70m.onnx` + `ams-hybrid-120m.onnx`. Verify with `npm run verify:ams`. Optional chat models: `.\scripts\pull-models.cmd` (Ollama + AMS verify). Without a chat backend, Chief returns **503** (fail-closed).
+Large ONNX files may use Git LFS. Clone with Git LFS installed if weights don’t appear as full binaries.
 
-## Two modes
+HF mirrors (optional): ams-micro-70m · ams-hybrid-120m
 
-| | **Simple** | **Pro** |
-|---|------------|---------|
-| **Feel** | Chat + terminal view | Full dashboard |
-| **Who's there** | One agent + Chief | Chief spawns agents, roles, hierarchy |
-| **Best for** | Fast daily chat | Research, builds, org-scale workflows |
+Modes
+Mode	Feel	Best for
+Super Agent	Chief-centered thread	Daily work
+Multi Agents	Live groups / parallel work	Shared tasks
+Pro Agents	Specialist roster + skills	Deep research & builds
+(Older “Simple / Pro” labels in early notes map into this Super · Multi · Pro shell.)
 
-## Modules out of the box
+Modules
+Module	Pre-release status
+Virtual Computer / Desk	Installed; desk daemon :3456 optional via ASI_DESK_REPO
+Companion display	ON on localhost / 127.0.0.1 (Settings → Modules → Show Squari elsewhere)
+Wearable	Research track — associated hardware/tools coming with the suite
+Arcade / games are not in this package. Postgres stays off (files by default).
 
-| Module | First-run |
-|--------|-----------|
-| **Virtual Computer** | Installed. Desk daemon on `:3456` is **optional** — set `ASI_DESK_REPO` only if you have a Desk install. Offline = honest empty status. |
-| **Companion** | **ON** automatically on `localhost` / `127.0.0.1`. Elsewhere: Settings → Modules → Show Squari. |
+Highlights
+Local-first · no account required to start
+Per-agent primary + secondary models with visible handoffs
+Draft-first inbox · Approve / Ask more / Reject
+Header Panic · Local / Wi‑Fi model toggles
+Hardware scan → what your machine can run
+License
+Apache License 2.0 — see LICENSE.
 
-Arcade / games are **not** in this package. Postgres stays off (files by default).
-
-## Highlights
-
-- Per-agent primary + secondary models with visible handoffs
-- Local answer layer · managed browser on demand
-- Hardware scan → recommended local models
-- AMS Micro + Hybrid bundled when weights are present
-
-## License
-
-[`LICENSE`](LICENSE) — MIT
-
----
+Copyright © 2026 V Varghese / ASI Agents.
 
 <div align="center">
-
-**ASI Agents** · research preview · transparent handoffs · local-first · no account to start
+ASI Agents · v0.1 Pre Release · intelligence that works as one
+Desk today · companion display · wearable next
 
 </div>

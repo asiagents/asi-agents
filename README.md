@@ -1,8 +1,7 @@
 <div align="center">
 ASI Agents
-Local-first multi-agent desk · research preview
-<img src="docs/assets/team-icon.gif" alt="ASI Agents team" width="200" />
-v0.1 Pre Release · Port 3445 · Snapdragon X ready · Apache-2.0
+Local-first multi-agent desk · Chief + specialists · AMS Micro/Hybrid on-device routing · Virtual Desktop · Companion display · wearable tools ahead · v0.1 research preview<img src="docs/assets/team-icon.gif" alt="ASI Agents team" width="200" />
+v0.1 Pre Release · Port 3445 · Windows / Snapdragon X ARM ready · Apache-2.0
 
 </div>
 <p align="center"> <img src="docs/assets/team-boardroom.jpg" alt="ASI Agents — intelligence that works as one" width="48%" /> &nbsp; <img src="docs/assets/team-campus-night.jpg" alt="ASI Agents campus · Virtual Desktop" width="48%" /> </p> <p align="center"><em>Chief · specialists · skills · Virtual Desktop — and the path toward wearable + companion display.</em></p>

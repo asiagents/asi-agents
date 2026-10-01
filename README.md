@@ -1,85 +1,107 @@
 <div align="center">
 
 # ASI Agents
+### Local-first multi-agent desk · next-generation agent suite · research preview
 
-### Local-first multi-agent desk · research preview
-
-<img src="docs/assets/team-icon.gif" alt="ASI Agents team" width="200" />
+<img src="docs/assets/team-icon.gif" alt="ASI Agents team" width="220" />
 
 **v0.1 Pre Release** · Port **3445** · Windows / Snapdragon X ARM ready · [Apache-2.0](LICENSE)
 
+[Getting started](#getting-started) · [Screenshots](#screenshots) · [Architecture](#architecture--stack) · [AMS models](#ams-models-in-this-package) · [Modes](#modes) · [Modules](#modules) · [Security model](#security--approvals) · [Hardware](#hardware-targets) · [License](#license)
+
 </div>
 
-<p align="center"><em>Chief · specialists · skills · Virtual Desktop — and the path toward wearable + companion display.</em></p>
+<p align="center"><em>Chief · specialists · skills · Virtual Desktop — companion display now, wearable track next.</em></p>
+
+---
+
+## Why this exists
+
+**ASI Agents** is a **local-first multi-agent desk**: you talk to a **Chief**, specialists run with **skills**, and an on-device **AMS** intent router decides what stays local vs what escalates. It is **not** a single-box chatbot demo — it is a **suite** meant to sit beside daily work: desk UI, Virtual Desktop, companion display, and a longer path toward **wearable** tools.
+
+This repository is a **researcher pre-release**. APIs and UI will move. The stake in the ground is: open code, honest approvals, and shippable on-device routers — not “AI theatre.”
+
+— **V Varghese** · [`@asiagents`](https://github.com/asiagents) · 2026
+
+Please don’t strip the license or claim the work as your own.
 
 ---
 
 ## Screenshots
 
-Product UI from this pre-release (also under [`docs/screenshots/`](docs/screenshots/)):
+Product UI from this pre-release ([`docs/screenshots/`](docs/screenshots/)):
 
 | Home | Simple chat | Pro dashboard |
 |:---:|:---:|:---:|
-| <img src="docs/screenshots/01-home.png" alt="Home" width="100%" /> | <img src="docs/screenshots/02-simple-chat.png" alt="Simple chat" width="100%" /> | <img src="docs/screenshots/03-pro-dashboard.png" alt="Pro dashboard" width="100%" /> |
+| <img src="docs/screenshots/01-home.png" alt="Home widget grid" width="100%" /> | <img src="docs/screenshots/02-simple-chat.png" alt="Simple / Super chat" width="100%" /> | <img src="docs/screenshots/03-pro-dashboard.png" alt="Pro Agents dashboard" width="100%" /> |
 
 | Companion display | AMS handoff |
 |:---:|:---:|
-| <img src="docs/screenshots/04-companion.png" alt="Companion" width="100%" /> | <img src="docs/screenshots/05-ams-handoff.png" alt="AMS handoff" width="100%" /> |
+| <img src="docs/screenshots/04-companion.png" alt="Companion / Squari display" width="100%" /> | <img src="docs/screenshots/05-ams-handoff.png" alt="AMS route / model handoff" width="100%" /> |
 
 <details>
-<summary>Team / brand stills (optional)</summary>
+<summary>Team / brand stills</summary>
 
 <p align="center">
-  <img src="docs/assets/team-boardroom.jpg" alt="ASI Agents — intelligence that works as one" width="48%" />
+  <img src="docs/assets/team-boardroom.jpg" alt="ASI Agents boardroom" width="48%" />
   &nbsp;
-  <img src="docs/assets/team-campus-night.jpg" alt="ASI Agents campus · Virtual Desktop" width="48%" />
+  <img src="docs/assets/team-campus-night.jpg" alt="ASI Agents campus" width="48%" />
 </p>
 
 </details>
 
 ---
 
-## A note from the researcher
-
-I’m an **AI researcher** shipping this as a **pre-release** of **ASI Agents** — a local-first multi-agent desk I’m building and testing in the open.
-
-The goal isn’t another chat demo. It’s a **next-generation agent suite** you can run beside you: a **Chief**, specialists with skills, honest approvals, and an on-device **AMS** intent router — then escalate to local chat or cloud only when the route needs it.
-
-I’m also building toward the **associated tools** that make that suite feel real in daily life — especially a focused **wearable** path and a **companion display** (Squari / Companion in this build) so the desk isn’t trapped in one window forever.
-
-This repo is that stake in the ground. APIs and UI will move. Stars, issues, and sharp notes help. Please don’t strip the license or claim the work as your own.
-
-— **V Varghese** · [`@asiagents`](https://github.com/asiagents) · 2026
-
----
-
-## Stack at a glance
+## Architecture / stack
 
 ```text
-  You
+  You  (browser · companion · future wearable)
    │
    ▼
- AMS on-device router   (Micro 70M default · Hybrid 120M optional — ONNX in models/ams/)
+ AMS on-device router
+   · AMS Micro ~70M  (default)   → models/ams/ams-micro-70m.onnx
+   · AMS Hybrid ~120M (optional) → models/ams/ams-hybrid-120m.onnx
+   · closed-schema intents · escalate only when needed
    │
    ▼
- ASI Agents desk        (Super · Multi · Pro · skills · approvals · Panic)
+ ASI Agents desk  (:3445)
+   · Super Agent · Multi Agents · Pro Agents
+   · skills · approvals · draft-first inbox · Panic
+   · primary + secondary model handoffs (visible)
    │
    ▼
- Virtual Desktop        (apps · browser · files)
+ Virtual Desktop / Computer
+   · apps · browser · files  (desk daemon :3456 optional)
    │
    ▼
- Companion / wearable   (companion display on now; wearable track next)
+ Companion display (Squari) · wearable research track
 ```
+
+**Design principles (pre-release):**
+
+1. **Local-first** — no account required to start; cloud is escalation, not the default.
+2. **Router before chatbot** — AMS classifies intent cheaply on-device; chat LLMs are targets, not the front door.
+3. **Human in the loop** — Approve / Ask more / Reject; draft-first mail; Panic in the header.
+4. **Visible routing** — you should see when Micro vs Hybrid vs chat backend is used.
+5. **Suite, not a single pane** — desk + Virtual Desktop + companion (+ wearable later).
 
 ---
 
 ## Getting started
 
-> **First run?** Double-click **`start-asi.cmd`**, then open http://127.0.0.1:3445
+> **First run?** Double-click **`start-asi.cmd`**, then open **http://127.0.0.1:3445**
 
-**One click (Windows / Snapdragon):** `start-asi.cmd` (setup + build on first run).
+### One click (Windows / Snapdragon)
 
-**Or three commands** (Node **20+**; prefer **ARM64** on Snapdragon X / Galaxy Book):
+```text
+start-asi.cmd
+```
+
+Runs setup + build on first launch when needed.
+
+### Three commands
+
+Requires **Node 20+**. On Snapdragon X / Galaxy Book prefer **ARM64** Node.
 
 ```bash
 npm.cmd run setup
@@ -87,32 +109,58 @@ npm.cmd run build
 npm.cmd run start
 ```
 
+### Verify AMS weights
+
+```bash
+npm run verify:ams
+```
+
+Optional larger chat models:
+
+```text
+.\scripts\pull-models.cmd
+```
+
+Without a chat backend, Chief returns **503** (fail-closed) rather than inventing answers.
+
 ---
 
-## Models in this package
+## AMS models in this package
 
-| File | Role |
-|------|------|
-| `models/ams/ams-micro-70m.onnx` | Default on-device intent router (~70M brand) |
-| `models/ams/ams-hybrid-120m.onnx` | Optional richer router (~120M brand) |
+| File | Brand | Role |
+|------|-------|------|
+| `models/ams/ams-micro-70m.onnx` | **AMS Micro ~70M** | Default on-device intent router |
+| `models/ams/ams-hybrid-120m.onnx` | **AMS Hybrid ~120M** | Optional richer router (more intents / aux) |
 
-Verify: `npm run verify:ams`. Optional chat models: `.\scripts\pull-models.cmd`. Without a chat backend, Chief returns **503** (fail-closed).
+> Export / stem IDs may differ from the public brand names (e.g. Micro export id vs “70M” brand). Treat brand names as product labels; verify with `npm run verify:ams`.
 
-> Large ONNX files use **Git LFS**. Clone with Git LFS installed if weights don’t appear as full binaries.
+**Git LFS:** ONNX files are stored with **Git LFS**. Install Git LFS before clone/pull if you need full binaries:
 
-HF mirrors (optional): [ams-micro-70m](https://huggingface.co/vvarghese/ams-micro-70m) · [ams-hybrid-120m](https://huggingface.co/vvarghese/ams-hybrid-120m)
+```bash
+git lfs install
+git clone https://github.com/asiagents/asi-agents.git
+```
+
+**Hugging Face mirrors (optional):**
+
+- [ams-micro-70m](https://huggingface.co/vvarghese/ams-micro-70m)
+- [ams-hybrid-120m](https://huggingface.co/vvarghese/ams-hybrid-120m)
+
+Chat 1B/3B-class models are **escalate targets**, not ship routers.
 
 ---
 
 ## Modes
 
+Locked product modes (all with skills):
+
 | Mode | Feel | Best for |
 |------|------|----------|
-| **Super Agent** | Chief-centered thread | Daily work |
-| **Multi Agents** | Live groups / parallel work | Shared tasks |
+| **Super Agent** | Chief-centered thread | Daily work, single-owner tasks |
+| **Multi Agents** | Live groups / parallel work | Shared tasks, fan-out |
 | **Pro Agents** | Specialist roster + skills | Deep research & builds |
 
-(Older “Simple / Pro” labels in early notes map into this Super · Multi · Pro shell.)
+Older “Simple / Pro” labels in early notes map into this **Super · Multi · Pro** shell.
 
 ---
 
@@ -120,21 +168,67 @@ HF mirrors (optional): [ams-micro-70m](https://huggingface.co/vvarghese/ams-micr
 
 | Module | Pre-release status |
 |--------|-------------------|
+| **ASI Agents desk** | Core UI on `:3445` |
 | **Virtual Computer / Desk** | Installed; desk daemon `:3456` optional via `ASI_DESK_REPO` |
-| **Companion display** | **ON** on `localhost` / `127.0.0.1` (Settings → Modules → Show Squari elsewhere) |
-| **Wearable** | Research track — associated hardware/tools coming with the suite |
+| **Companion display (Squari)** | **ON** on `localhost` / `127.0.0.1` — Settings → Modules → Show Squari elsewhere |
+| **Wearable** | Research track — associated hardware/tools planned with the suite |
+| **Inbox** | Draft-first composer; email gated until configured (Gmail / IMAP / POP3 path) |
+| **Approvals** | Inline Approve / Ask more / Reject cards |
+| **Panic** | Header kill-switch for runaway work |
+| **Hardware scan** | Surfaces what the machine can run |
 
-Arcade / games are **not** in this package. Postgres stays off (files by default).
+**Not in this package:** Arcade / games. **Postgres** control-plane stays **off** by default (files / `ControlPlaneStore`).
 
 ---
 
-## Highlights
+## Security & approvals
 
-- Local-first · no account required to start  
-- Per-agent primary + secondary models with **visible** handoffs  
-- Draft-first inbox · Approve / Ask more / Reject  
-- Header **Panic** · Local / Wi‑Fi model toggles  
-- Hardware scan → what your machine can run  
+- **Draft-first** outbound mail / messages — you send; the desk drafts.
+- **Approve / Ask more / Reject** on consequential agent actions.
+- **Panic** stops active agent work from the header.
+- **Fail-closed** when required backends are missing (e.g. Chief **503** without chat).
+- Do not commit secrets, home paths with personal identity, or live API keys into docs/screenshots.
+
+---
+
+## Hardware targets
+
+| Tier | Role |
+|------|------|
+| **Ship / daily desk** | ~16 GB VRAM class + ~32 GB system RAM as the primary development/ship seat (RTX 3060-class and up) |
+| **Train / heavy** | High-VRAM GPU seats (e.g. RTX 5090 class) for training playgrounds — not required to run the desk |
+| **Lighter later** | Scaled-down / CPU-friendlier paths planned after the base ship |
+
+Snapdragon X ARM is a supported **run** target for the Node desk; treat heavy training as separate.
+
+---
+
+## Repo map (high level)
+
+```text
+models/ams/          AMS Micro + Hybrid ONNX (Git LFS)
+docs/screenshots/    Product UI captures
+docs/assets/         Brand / team stills + icon GIF
+start-asi.cmd        One-click Windows / Snapdragon entry
+scripts/             Setup, model pull, verify helpers
+```
+
+(Exact app tree continues to evolve in this pre-release.)
+
+---
+
+## What’s next (research)
+
+- Wearable companion path beyond the current Squari display  
+- Richer AMS confidence / clarify / decision traces in the desk  
+- Optional cloud Smart route as escalate — never as the local default  
+- More real UI screenshots and feature docs as the shell hardens  
+
+---
+
+## Contributing / feedback
+
+Issues and sharp notes welcome. This is a moving pre-release: prefer actionable repros (OS, Node arch, `npm run verify:ams` output).
 
 ---
 

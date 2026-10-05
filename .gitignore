@@ -3,7 +3,6 @@ node_modules/
 dist/
 **/dist/
 releases/
-src/app/node_modules/
 *.log
 .env
 .env.*
@@ -18,11 +17,16 @@ agent-transcripts/
 *.pem
 coverage/
 .turbo/
-# Large AMS / custom weight drops (fetch once via npm run install:ams)
-models/ams/*.gguf
+
+# Never commit model weights (ship via GitHub Release / Hugging Face)
+*.onnx
+*.gguf
 models/ams/*.onnx
+models/ams/*.gguf
 models/ams/.hf-cache/
 models/custom/*.gguf
+models/custom/*.onnx
 !models/ams/catalog.json
 !models/ams/README.md
+!models/ams/PLACE-WEIGHTS-HERE.md
 !models/ams/.gitkeep

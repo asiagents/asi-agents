@@ -22,5 +22,6 @@ RUN npm install && npm run build
 ENV NODE_ENV=production
 ENV ASI_AMS_SKILL_RUN=0
 ENV ASI_USE_POSTGRES=0
+ENV ASI_SERVER_HOST=0.0.0.0
 EXPOSE 3445
 CMD ["npm", "run", "start"]

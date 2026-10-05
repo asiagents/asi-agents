@@ -1,24 +1,24 @@
-# ASI Agents v0.1 Pre Release — checklist
+# ASI Agents — GitHub-clean checklist
 
 **Brand:** ASI Agents only.  
-**Docs shipped:** `README.md` · `LICENSE` · this file.
+**Docs:** `README.md` · `LICENSE` · `GITHUB-RELEASE-NOTES.md` · `GITHUB-UPLOAD.md` · `PUBLIC-LISTING.md` · `docs/UPDATES.md` · this file.
 
 | Item | Status |
 |------|--------|
-| Sanitized tree (no `node_modules`, `dist`, `.env`, games, planning docs) | ✅ |
-| `start-asi.cmd` one-click | ✅ |
-| Getting Started inside `README.md` | ✅ |
+| No `*.onnx` / `*.gguf` in tree | ✅ |
+| `.gitignore` covers `.env`, `node_modules`, `dist`, weights, `app-state` | ✅ |
+| Optional `.gitattributes` (LFS stubs) | ✅ |
+| Games / Arcade omitted | ✅ |
+| `start-asi.cmd` + `scripts/pull-models.cmd` + `scripts/update-asi.cmd` | ✅ |
 | Port **3445** | ✅ |
-| Virtual Computer + Companion OOB (Desk optional) | ✅ |
-| **AMS ONNX bundled** (`ams-micro-70m.onnx` + `ams-hybrid-120m.onnx` under `models/ams/`) | ✅ |
-| LICENSE | ✅ |
-| Secret / brand scan | ✅ |
+| LICENSE (MIT) | ✅ |
+| Release story: AMS + virtual-computer in Snapdragon zip | ✅ |
 
 ```powershell
-# Double-click start-asi.cmd
 npm.cmd run setup
 npm.cmd run build
+npm.cmd run install:ams   # or drop Release onnx into models\ams\
+.\scripts\pull-models.cmd
 npm.cmd run start
 # → http://127.0.0.1:3445
-# Optional: npm run verify:ams
 ```

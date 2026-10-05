@@ -1,13 +1,18 @@
 <div align="center">
 
 # ASI Agents
-### Local-first multi-agent desk · next-generation agent suite · research preview
+
+**Local-first multi-agent desk — a Chief, specialist agents, and an on-device intent router that decides what ever reaches an LLM.**
 
 <img src="docs/assets/team-icon.gif" alt="ASI Agents team" width="220" />
 
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Status: research preview](https://img.shields.io/badge/status-research%20preview-orange.svg)](#whats-next-research)
+[![Node 20+](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](#getting-started)
+
 **v0.1 Pre Release** · Port **3445** · Windows / Snapdragon X ARM ready · [Apache-2.0](LICENSE)
 
-[Getting started](#getting-started) · [Screenshots](#screenshots) · [Architecture](#architecture--stack) · [AMS models](#ams-models-in-this-package) · [Modes](#modes) · [Modules](#modules) · [Security model](#security--approvals) · [Hardware](#hardware-targets) · [License](#license)
+[Why router-first](#why-router-before-chatbot) · [Screenshots](#screenshots) · [Getting started](#getting-started) · [Architecture](#architecture--stack) · [AMS models](#ams-models-in-this-package) · [Modes](#modes) · [Modules](#modules) · [Security model](#security--approvals) · [Hardware](#hardware-targets) · [Contributing](#contributing--feedback) · [License](#license)
 
 </div>
 
@@ -15,15 +20,23 @@
 
 ---
 
-## Why this exists
+## Why router-before-chatbot?
 
-**ASI Agents** is a **local-first multi-agent desk**: you talk to a **Chief**, specialists run with **skills**, and an on-device **AMS** intent router decides what stays local vs what escalates. It is **not** a single-box chatbot demo — it is a **suite** meant to sit beside daily work: desk UI, Virtual Desktop, companion display, and a longer path toward **wearable** tools.
+Every message in a typical agent stack goes straight to an LLM — expensive, slow, and leaky. **ASI Agents** inserts a cheap, private, on-device step first: **AMS**, a ~70M-parameter intent router (ONNX) that classifies what you want and only escalates to a chat model when local handling isn't enough.
 
-This repository is a **researcher pre-release**. APIs and UI will move. The stake in the ground is: open code, honest approvals, and shippable on-device routers — not “AI theatre.”
+```text
+You ──► AMS intent router (on-device, ~70M ONNX)
+          ├── handled locally ──► skills / tools / canned flows
+          ├── needs reasoning ──► local chat model (Ollama etc.)
+          └── needs frontier  ──► cloud provider (explicit, logged, approved)
+```
 
-— **V Varghese** · [`@asiagents`](https://github.com/asiagents) · 2026
+- **Private by default** — intents classified on your hardware; nothing leaves the machine unless a route says so. No account required to start.
+- **Cheap** — milliseconds per message instead of a frontier-model round trip.
+- **Auditable** — every routing decision is visible in the desk and written to the audit log.
+- **Human in the loop** — Approve / Ask more / Reject on consequential actions, draft-first mail, and a **Panic** kill-switch in the header.
 
-Please don’t strip the license or claim the work as your own.
+It is **not** a single-box chatbot demo — it is a **suite** meant to sit beside daily work: desk UI, Virtual Desktop, companion display, and a longer path toward **wearable** tools.
 
 ---
 
@@ -68,6 +81,7 @@ Product UI from this pre-release ([`docs/screenshots/`](docs/screenshots/)):
    · Super Agent · Multi Agents · Pro Agents
    · skills · approvals · draft-first inbox · Panic
    · primary + secondary model handoffs (visible)
+   · per-turn cost tracing · audit log
    │
    ▼
  Virtual Desktop / Computer
@@ -76,6 +90,8 @@ Product UI from this pre-release ([`docs/screenshots/`](docs/screenshots/)):
    ▼
  Companion display (Squari) · wearable research track
 ```
+
+**Stack:** TypeScript monorepo · Express server · React + Vite + Tailwind · ONNX Runtime · pluggable chat backends (local via Ollama, or any OpenAI-compatible provider).
 
 **Design principles (pre-release):**
 
@@ -107,6 +123,12 @@ Requires **Node 20+**. On Snapdragon X / Galaxy Book prefer **ARM64** Node.
 npm.cmd run setup
 npm.cmd run build
 npm.cmd run start
+```
+
+### Docker (any platform)
+
+```bash
+docker build -t asi-agents . && docker run -p 3445:3445 asi-agents
 ```
 
 ### Verify AMS weights
@@ -147,6 +169,10 @@ git clone https://github.com/asiagents/asi-agents.git
 - [ams-hybrid-120m](https://huggingface.co/vvarghese/ams-hybrid-120m)
 
 Chat 1B/3B-class models are **escalate targets**, not ship routers.
+
+### Benchmarks
+
+*Coming soon — intent accuracy, routing latency, and tokens saved vs. direct-to-LLM. Contributions to the eval harness are very welcome; see [issues](https://github.com/asiagents/asi-agents/issues).*
 
 ---
 
@@ -211,6 +237,8 @@ docs/screenshots/    Product UI captures
 docs/assets/         Brand / team stills + icon GIF
 start-asi.cmd        One-click Windows / Snapdragon entry
 scripts/             Setup, model pull, verify helpers
+src/                 app (React/Vite) · server (Express) · shared
+modules/             virtual-computer · postgres-store · Companion Agent
 ```
 
 (Exact app tree continues to evolve in this pre-release.)
@@ -219,16 +247,25 @@ scripts/             Setup, model pull, verify helpers
 
 ## What’s next (research)
 
-- Wearable companion path beyond the current Squari display  
-- Richer AMS confidence / clarify / decision traces in the desk  
-- Optional cloud Smart route as escalate — never as the local default  
-- More real UI screenshots and feature docs as the shell hardens  
+- AMS benchmark suite — accuracy, latency, tokens saved vs. direct-to-LLM
+- Richer AMS confidence / clarify / decision traces in the desk
+- macOS / Linux one-command setup alongside `start-asi.cmd`
+- Wearable companion path beyond the current Squari display
+- Optional cloud Smart route as escalate — never as the local default
+- More real UI screenshots and feature docs as the shell hardens
 
 ---
 
 ## Contributing / feedback
 
 Issues and sharp notes welcome. This is a moving pre-release: prefer actionable repros (OS, Node arch, `npm run verify:ams` output).
+
+Highest-impact contributions right now:
+
+- **Benchmarks** — help build the AMS eval harness (the claim worth proving)
+- **Portability** — `start-asi.sh` for macOS/Linux; harden the Docker path
+- **Tests & CI** — build/typecheck/test workflow
+- **Docs** — demo GIF, setup guides, more real UI captures
 
 ---
 
@@ -242,7 +279,7 @@ Copyright © 2026 **V Varghese** / **ASI Agents**.
 
 <div align="center">
 
-**ASI Agents** · v0.1 Pre Release · intelligence that works as one  
+**ASI Agents** · v0.1 Pre Release · intelligence that works as one
 *Desk today · companion display · wearable next*
 
 </div>

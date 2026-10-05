@@ -42,7 +42,7 @@ export function mapServerMessageMeta(meta?: ApiMessage['meta']): ChatMessageMeta
     promptTokens: meta.promptTokens,
     completionTokens: meta.completionTokens,
     tokensPerSecond: meta.tokensPerSecond,
-    estimatedCostUsd: meta.estimatedCostUsd ?? costTrace?.totalEstimatedCostUsd ?? 0,
+    estimatedCostUsd: meta.estimatedCostUsd ?? costTrace?.totalEstimatedCostUsd,
     costTrace,
     intentId: meta.intentId?.trim() || undefined,
     source: meta.source,
@@ -70,16 +70,18 @@ function formatUsd(n: number): string {
 }
 
 /**
- * Metrics line under assistant bubbles.
- * Example: `ollama:llama3.2 · 128 tok · 12.4 tok/s · 1.2s · $0`
+ * Metrics line under assistant bubbles (when Settings → Show message timing is on).
+ * Example: `ollama:llama3.2 · 128 tok · 12.4 tok/s · 1.2s` — omits $0 (no fake metering).
  */
 export function formatMessageMetaLine(meta: ChatMessageMeta): string | null {
+  const cost = meta.estimatedCostUsd ?? meta.costTrace?.totalEstimatedCostUsd;
+  const hasRealCost = cost != null && Number.isFinite(cost) && cost > 0;
   const hasMetrics =
     meta.latencyMs != null ||
     meta.promptTokens != null ||
     meta.completionTokens != null ||
     meta.tokensPerSecond != null ||
-    meta.estimatedCostUsd != null ||
+    hasRealCost ||
     Boolean(meta.costTrace);
   if (!hasMetrics) return null;
   const parts: string[] = [];
@@ -94,8 +96,7 @@ export function formatMessageMetaLine(meta: ChatMessageMeta): string | null {
   if (latencyMs != null) {
     parts.push(latencyMs >= 1000 ? `${(latencyMs / 1000).toFixed(1)}s` : `${latencyMs}ms`);
   }
-  const cost = meta.estimatedCostUsd ?? meta.costTrace?.totalEstimatedCostUsd ?? 0;
-  parts.push(formatUsd(cost));
+  if (hasRealCost) parts.push(formatUsd(cost!));
   return parts.length ? parts.join(' · ') : null;
 }
 
@@ -152,7 +153,10 @@ export function formatCostTraceLines(meta: ChatMessageMeta): string[] {
   if (!stages?.length) return [];
   return stages.map((s) => {
     const ms = `${s.latencyMs}ms`;
-    const usd = formatUsd(s.estimatedCostUsd);
+    const usd =
+      Number.isFinite(s.estimatedCostUsd) && s.estimatedCostUsd > 0
+        ? ` · ${formatUsd(s.estimatedCostUsd)}`
+        : '';
     const tok =
       s.totalTokens != null && s.totalTokens > 0
         ? ` · ${s.totalTokens} tok`
@@ -160,6 +164,6 @@ export function formatCostTraceLines(meta: ChatMessageMeta): string[] {
           ? ` · ${(s.promptTokens ?? 0) + (s.completionTokens ?? 0)} tok`
           : '';
     const via = s.via ? ` · ${s.via}` : '';
-    return `${s.stage} ${ms} · ${usd}${tok}${via}`;
+    return `${s.stage} ${ms}${usd}${tok}${via}`;
   });
 }

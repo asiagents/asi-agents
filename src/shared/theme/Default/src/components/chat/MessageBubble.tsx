@@ -133,6 +133,8 @@ function TurnTracePanel({ item }: { item: ChatMessage }) {
 }
 
 function MessageMetrics({ item }: { item: ChatMessage }) {
+  const { s } = useSettings();
+  if (!s.showMessageTiming) return null;
   const line = item.meta ? formatMessageMetaLine(item.meta) : null;
   const sourceLabel = item.meta ? formatSourceChipLabel(item.meta) : null;
   const hasTrace = Boolean(
@@ -158,6 +160,9 @@ function MessageMetrics({ item }: { item: ChatMessage }) {
 }
 
 export function MessageBubble({ item }: { item: ChatMessage }) {
+  const { s } = useSettings();
+  const showTiming = s.showMessageTiming;
+
   if (item.final) {
     const agent = item.author !== 'user' ? getAgent(item.author) : undefined;
     const displayName =
@@ -187,8 +192,8 @@ export function MessageBubble({ item }: { item: ChatMessage }) {
   }
 
   if (item.author === 'user') {
-    const sourceLabel = item.meta ? formatSourceChipLabel(item.meta) : null;
-    const decisionChip = item.meta ? formatDecisionTraceChip(item.meta) : null;
+    const sourceLabel = showTiming && item.meta ? formatSourceChipLabel(item.meta) : null;
+    const decisionChip = showTiming && item.meta ? formatDecisionTraceChip(item.meta) : null;
     const safe = safeMessageText(item.text, { stripCot: false });
     return (
       <motion.div {...enter} className="flex justify-end">
@@ -214,7 +219,8 @@ export function MessageBubble({ item }: { item: ChatMessage }) {
   const safe = safeMessageText(item.text);
   const needsPerm = messageImpliesApproval(safe);
   const hasUsageMeta = Boolean(
-    item.meta &&
+    showTiming &&
+      item.meta &&
       (formatMessageMetaLine(item.meta) ||
         formatSourceChipLabel(item.meta) ||
         formatDecisionTraceChip(item.meta) ||

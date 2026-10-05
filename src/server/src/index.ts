@@ -4,7 +4,6 @@ import { fileURLToPath } from "node:url";
 import cors from "cors";
 import express from "express";
 import { mountDeskRoutes, mountBrowserRoutes, ensureDeskDaemon } from "@asi-agents/virtual-computer";
-import { mountGamesRoutes } from "@asi-agents/games";
 import { getAgentChatThread, postAgentChat } from "./agentChat.js";
 import { getProChatThread, postProChat } from "./proChat.js";
 import { ChiefGenerateError, getChiefThread, postChiefChat } from "./chief.js";
@@ -154,7 +153,7 @@ import { getStandingPermissionRules, setStandingPermissionRules } from "./standi
 import type { PermissionPolicy } from "./types.js";
 import type { RecycleLogEntry } from "./types.js";
 
-const HOST = "127.0.0.1";
+const HOST = (process.env.ASI_SERVER_HOST ?? "127.0.0.1").trim() || "127.0.0.1";
 const PORT = Number(process.env.ASI_SERVER_PORT ?? process.env.ASI_ENGINE_PORT ?? 3445);
 
 const app = express();
@@ -1181,7 +1180,7 @@ app.get("/api/company-ops", (_req, res) => {
         status: "shipped",
         summary:
           "Allowlisted subprocess/HTTP adapter registry in Settings → Company (#adapters). Invoke gated by ASI_AMS_SKILL_RUN; fail-closed; no chat shell.",
-        roadmap: "Richer connectors / Claude Code–style runtimes later — still not free-form shell from chat.",
+        roadmap: "Richer BYO agent-runtime connectors later — still not free-form shell from chat.",
       },
       {
         id: "postgres",
@@ -1204,7 +1203,7 @@ app.get("/api/company-ops", (_req, res) => {
         summary:
           "Eleven cloud API-key providers shipped (incl. Hugging Face router). Azure OpenAI and AWS Bedrock enterprise cards are not wired.",
         roadmap:
-          "Cursor-style modular cards: Use Azure / Use Bedrock toggles, base URL + deployment + region fields, secret saved. Separate from BYO agent-runtime adapters.",
+          "Modular enterprise cards: Use Azure / Use Bedrock toggles, base URL + deployment + region fields, secret saved. Separate from BYO agent-runtime adapters.",
       },
       {
         id: "skill-studio",
@@ -1683,7 +1682,6 @@ app.post("/ctl/calls/kill-all", (_req, res) => res.json({ ok: true, stub: true }
 
 mountDeskRoutes(app);
 mountBrowserRoutes(app);
-mountGamesRoutes(app);
 mountModulesCatalogRoutes(app);
 
 const serverDist = path.dirname(fileURLToPath(import.meta.url));

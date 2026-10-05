@@ -1,7 +1,6 @@
 import {
   Building2Icon,
   FolderIcon,
-  Gamepad2Icon,
   HomeIcon,
   InboxIcon,
   LayoutGridIcon,
@@ -42,15 +41,6 @@ export const navCatalog: NavEntry[] = [
     icon: LayoutGridIcon,
     match: ['/board'],
   },
-  /** Footer Arcade opens hub with play= so bike race auto-starts for that visit only. */
-  {
-    id: 'arcade',
-    to: '/arcade?play=agent-bike-race',
-    label: 'Arcade',
-    description: 'Agent mini-games',
-    icon: Gamepad2Icon,
-    match: ['/arcade'],
-  },
   { id: 'settings', to: '/settings', label: 'Settings', description: 'Everything else', icon: Settings2Icon, match: ['/settings'] },
 ];
 
@@ -58,7 +48,7 @@ export const navCatalog: NavEntry[] = [
  * Hidden from bottom menu and Settings → Navigation picker.
  * Office / Board routes still work via URL; Arcade deep links show "Games unavailable".
  */
-export const hiddenNavIds: NavId[] = ['office', 'arcade', 'board'];
+export const hiddenNavIds: NavId[] = ['office', 'board'];
 
 /** Footer/lower rail defaults. */
 export const defaultNav: NavId[] = [

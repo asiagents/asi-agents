@@ -28,12 +28,12 @@ const runtimeCards = [
     id: 'byo-runtime',
     name: 'BYO agent runtime',
     icon: LayersIcon,
-    body: 'Claude Code / Codex-style adapters are not shipped. See Company ops → BYO adapters.',
+    body: 'External agent-runtime adapters are not shipped. See Company ops → BYO adapters.',
     status: 'stub' as const,
   },
 ];
 
-/** Cursor-style Runtimes section — honest stubs; no fake live connectors. */
+/** Runtimes section — honest stubs; no fake live connectors. */
 export function ConnectionsRuntimes() {
   return (
     <div className="grid gap-3 sm:grid-cols-2">

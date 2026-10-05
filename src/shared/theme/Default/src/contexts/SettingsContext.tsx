@@ -123,7 +123,8 @@ export function SettingsProvider({ firstLaunch, children }: {firstLaunch: boolea
     officeLight: 'auto',
     greenery: false,
     mapViz: true,
-    mapShowBypass: true
+    mapShowBypass: true,
+    showMessageTiming: readFlag(STORAGE_KEYS.showMessageTiming),
   });
   const [net, setNet] = useState<NetState>({
     status: 'ok',
@@ -146,6 +147,9 @@ export function SettingsProvider({ firstLaunch, children }: {firstLaunch: boolea
   const set = useCallback(<K extends keyof AppSettings,>(key: K, value: AppSettings[K]) => {
     if (key === 'homeHeroImage') {
       writeFlag(STORAGE_KEYS.homeHeroVisible, Boolean(value));
+    }
+    if (key === 'showMessageTiming') {
+      writeFlag(STORAGE_KEYS.showMessageTiming, Boolean(value));
     }
     if (key === 'avatarEmoji') {
       const emoji = String(value ?? '').trim() || DEFAULT_AVATAR_EMOJI;

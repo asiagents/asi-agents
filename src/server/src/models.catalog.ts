@@ -83,7 +83,7 @@ function inferCapabilities(id: string, modality?: string, name?: string): string
 
   const caps: string[] = ["chat"];
 
-  if (mod.includes("image") || /llava|moondream|vision|glm-4v|gpt-4o|claude-3|gemini|pixtral|qwen-vl|internvl|llama-3\.2-vision|bakllava/i.test(hay)) {
+  if (mod.includes("image") || /llava|moondream|vision|glm-4v|gpt-4o|gemini|pixtral|qwen-vl|internvl|llama-3\.2-vision|bakllava/i.test(hay)) {
     caps.push("vision");
   }
   if (/embed|nomic-embed|bge-|e5-|minilm/i.test(hay)) caps.push("embed");

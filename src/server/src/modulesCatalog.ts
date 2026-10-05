@@ -38,14 +38,8 @@ function repoRoot(): string {
   return path.resolve(here, "../../..");
 }
 
-function readGamesCount(root: string): { ok: boolean; count: number } {
-  try {
-    const raw = fs.readFileSync(path.join(root, "config/games.catalog.json"), "utf8");
-    const j = JSON.parse(raw) as { games?: unknown[] };
-    return { ok: Array.isArray(j.games), count: Array.isArray(j.games) ? j.games.length : 0 };
-  } catch {
-    return { ok: false, count: 0 };
-  }
+function readGamesCount(_root: string): { ok: boolean; count: number } {
+  return { ok: false, count: 0 };
 }
 
 export async function buildModulesCatalog(): Promise<{
@@ -63,8 +57,7 @@ export async function buildModulesCatalog(): Promise<{
 
   const deskProbe = await probeDesk();
   const vcDir = path.join(root, "modules/virtual-computer");
-  const gamesDir = path.join(root, "modules/games");
-  const pgDir = path.join(root, "modules/postgres-store");
+    const pgDir = path.join(root, "modules/postgres-store");
   const games = readGamesCount(root);
 
   const pg = getPostgresModuleStatus();
@@ -100,14 +93,12 @@ export async function buildModulesCatalog(): Promise<{
     {
       id: "games",
       name: "Arcade / Games",
-      version: readPackageVersion(gamesDir),
-      status: games.ok ? "live" : "off",
-      detail: games.ok
-        ? `${games.count} game(s) in catalog · /arcade`
-        : "Games catalog failed to load.",
-      docsPath: "docs/MODULES.md",
-      enableHint: "Nav → Arcade · module @asi-agents/games",
-      folder: "modules/games",
+      version: null,
+      status: "off",
+      detail: "Not included in this research / pre-release package.",
+      docsPath: "docs/FEATURE-FLAGS.md",
+      enableHint: "Games pack omitted from this preview",
+      folder: null,
     },
     {
       id: "postgres-store",

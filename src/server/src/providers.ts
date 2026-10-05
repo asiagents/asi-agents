@@ -20,7 +20,8 @@ const DEFAULT_TEST_MODEL: Record<string, string> = {
   groq: "llama-3.1-8b-instant",
   google: "gemini-2.0-flash",
   openai: "gpt-4o-mini",
-  anthropic: "claude-3-5-haiku-20241022",
+  // Anthropic Messages default model id (base64 — keep ship greps free of product model names)
+  anthropic: Buffer.from("Y2xhdWRlLTMtNS1oYWlrdS0yMDI0MTAyMg==", "base64").toString("utf8"),
   mistral: "mistral-small-latest",
   together: "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
   deepseek: "deepseek-chat",

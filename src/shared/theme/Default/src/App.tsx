@@ -42,7 +42,6 @@ import { SettingsCompanyTraining } from './pages/settings/SettingsCompanyTrainin
 import { SettingsCompanyOps } from './pages/settings/SettingsCompanyOps';
 import { Lessons } from './pages/Lessons';
 import { Lock } from './pages/Lock';
-import { Arcade, ArcadeGame } from './pages/Arcade';
 import { FilesPage } from './pages/Files';
 import { Onboarding } from './components/Onboarding';
 import { ProProvider } from './contexts/ProContext';
@@ -97,8 +96,6 @@ export function App({ initialMode = 'multi', theme = 'light', deskModule = true,
                     <Route path="/onboarding" element={<Onboarding />} />
                     <Route path="/desk" element={<VirtualComputer />} />
                     <Route path="/files" element={<FilesPage />} />
-                    <Route path="/arcade" element={<Arcade />} />
-                    <Route path="/arcade/:gameId" element={<ArcadeGame />} />
                     <Route path="/models" element={<Navigate to="/settings/models" replace />} />
                     <Route path="/settings" element={<SettingsLayout />}>
                       <Route index element={<SettingsHub />} />

@@ -224,10 +224,12 @@ async function maybeAmsRefine(raw: string, base: FanOutDecision): Promise<FanOut
     '"action":"short action or intent id","compound":false,"confidence":0.0}. ' +
     "Unused slots may be omitted. Do not answer the user.";
   try {
+    // Classify-only: short timeout — never block local intent on a cold AMS micro load.
     const attempt = await tryRouterGenerate(
       `Classify this user turn for ASI Agents routing:\n${raw.slice(0, 400)}`,
       resolveRouterBackendModel("micro"),
-      system
+      system,
+      { timeoutMs: 2_500 }
     );
     if (!attempt?.text) return base;
     const parsed = parseAmsJson(attempt.text);

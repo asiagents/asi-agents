@@ -48,6 +48,8 @@ export const STORAGE_KEYS = {
   modelCascade: 'modelCascade',
   /** Home desk hero banner visibility (user toggle on Home or Settings → Performance). */
   homeHeroVisible: 'homeHeroVisible',
+  /** Chat: show per-message timing / cost footer (1=on). Default off when unset. */
+  showMessageTiming: 'showMessageTiming',
   /** Local TTS warm-cache timestamps for scripted lines. */
   ttsWarmCache: 'ttsWarmCache',
   /** Chat agent details right rail (1=open, 0=collapsed). Default collapsed. */
@@ -92,6 +94,21 @@ export const STORAGE_KEYS = {
   navItems: 'navItems',
   /** Manual nav links `{ id, label, to, surfaces }[]`. */
   customNavLinks: 'customNavLinks',
+  /** Desk companion hub: last active tab id. */
+  companionHubTab: 'companionHubTab',
+  /** Desk companion sticky note (plain text). */
+  companionStickyNote: 'companionStickyNote',
+  /** Desk companion countdown prefs `{ minutes, label, notify }`. */
+  companionCountdown: 'companionCountdown',
+  /** Desk companion focus timer prefs `{ minutes }`. */
+  companionFocus: 'companionFocus',
+  /**
+   * Home Wi‑Fi vault — AES-GCM ciphertext only (never plaintext password).
+   * Shape: `{ v:1, ssid, last4, cipher, iv }` — see companion/wifiVault.ts.
+   */
+  companionWifiVault: 'companionWifiVault',
+  /** Random AES key material for companion Wi‑Fi vault (base64). Local-only. */
+  companionWifiVaultKey: 'companionWifiVaultKey',
 } as const;
 
 export type ClockStyle = 'digital' | 'analog' | 'mechanical';

@@ -11,8 +11,7 @@ export type NavId =
   | 'tasks'
   | 'office'
   | 'agents'
-  | 'board'
-  | 'arcade';
+  | 'board';
 
 export interface NavEntry {
   id: string;

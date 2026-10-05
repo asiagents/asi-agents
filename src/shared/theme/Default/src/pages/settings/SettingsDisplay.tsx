@@ -88,6 +88,11 @@ export function SettingsPerformance() {
           <SettingsRow title="Low-end mode" detail="Static agents, TTS off, lighter Office. You can re-enable each one.">
             <Toggle label="Low-end mode" checked={s.lowEnd} onChange={(v) => set('lowEnd', v)} />
           </SettingsRow>
+          <SettingsRow
+            title="Show message timing"
+            detail="Per-message duration / tokens under chat bubbles. Off by default — local intent is not metered; we never show $0 as if it were billing.">
+            <Toggle label="Show message timing" checked={s.showMessageTiming} onChange={(v) => set('showMessageTiming', v)} />
+          </SettingsRow>
         </div>
       </SettingsSection>
       <SettingsSection title="Model map" description="How Models → detail draws the route from agent to model.">

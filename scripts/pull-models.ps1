@@ -23,8 +23,10 @@ Write-Host "[AMS] checking models/ams weights..." -ForegroundColor Cyan
 & npm.cmd run verify:ams
 if ($LASTEXITCODE -ne 0) {
   Write-Host ""
-  Write-Host "[AMS] weights missing — see models/ams/PLACE-WEIGHTS-HERE.md" -ForegroundColor Yellow
-  Write-Host "      or: npm run install:ams"
+  Write-Host "[AMS] weights missing — GitHub-clean trees do not ship ONNX." -ForegroundColor Yellow
+  Write-Host "      1. Download Release zip / onnx assets into models/ams/"
+  Write-Host "      2. Or: npm run install:ams  (Hugging Face)"
+  Write-Host "      See models/ams/PLACE-WEIGHTS-HERE.md"
   exit 2
 }
 

@@ -155,6 +155,8 @@ export interface AppSettings {
   mapViz: boolean;
   /** Models → detail: show skipped hops (router / encryption) as dashed bypass lines. */
   mapShowBypass: boolean;
+  /** Chat bubbles: show duration / token / cost footer. Off by default — we don't meter local intent. */
+  showMessageTiming: boolean;
 }
 
 export interface NetState {

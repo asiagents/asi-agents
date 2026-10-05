@@ -14,6 +14,7 @@ services:
       NODE_ENV: production
       ASI_AMS_SKILL_RUN: "0"
       ASI_USE_POSTGRES: "0"
+      ASI_SERVER_HOST: "0.0.0.0"
       # OLLAMA_HOST: http://host.docker.internal:11434
     volumes:
       - asi-data:/data

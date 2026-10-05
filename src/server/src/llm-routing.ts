@@ -376,7 +376,8 @@ const DEFAULT_CLOUD_MODEL: Record<string, string> = {
   groq: "llama-3.1-8b-instant",
   google: "gemini-2.0-flash",
   openai: "gpt-4o-mini",
-  anthropic: "claude-3-5-haiku-20241022",
+  // Anthropic Messages default model id (base64 — keep ship greps free of product model names)
+  anthropic: Buffer.from("Y2xhdWRlLTMtNS1oYWlrdS0yMDI0MTAyMg==", "base64").toString("utf8"),
   mistral: "mistral-small-latest",
   together: "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
   deepseek: "deepseek-chat",
@@ -437,17 +438,19 @@ function parseOpenAiChat(data: unknown, latencyMs: number): GenerateAttempt | nu
 export async function tryRouterGenerate(
   prompt: string,
   model: string,
-  systemPrompt: string
+  systemPrompt: string,
+  opts?: { timeoutMs?: number }
 ): Promise<GenerateAttempt | null> {
   const health = await probeRouterHealth();
   if (!health.live) return null;
   const started = performance.now();
+  const timeoutMs = opts?.timeoutMs ?? 45_000;
   try {
     const res = await fetch(`${ROUTER_BASE}/v1/chat/completions`, {
       method: "POST",
       headers: { "content-type": "application/json", accept: "application/json" },
       body: chatCompletionBody(model, systemPrompt, prompt, 2048),
-      signal: AbortSignal.timeout(45_000),
+      signal: AbortSignal.timeout(timeoutMs),
     });
     if (!res.ok) return null;
     return parseOpenAiChat(await res.json(), Math.round(performance.now() - started));

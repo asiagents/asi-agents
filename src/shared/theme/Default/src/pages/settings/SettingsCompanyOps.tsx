@@ -461,7 +461,7 @@ export function SettingsCompanyOps() {
               icon: CloudIcon,
               title: 'Azure / Bedrock BYO',
               body: 'Ten API-key providers work; Azure OpenAI and AWS Bedrock enterprise cards are missing.',
-              roadmap: 'Cursor-style modular cards: enable toggle, base URL / region / deployment, secret saved.',
+              roadmap: 'Modular enterprise cards: enable toggle, base URL / region / deployment, secret saved.',
               tone: 'warn' as const,
               badge: 'Partial',
             },

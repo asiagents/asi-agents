@@ -18,7 +18,7 @@ import { useSettings } from '../../contexts/SettingsContext';
 import { api } from '@asi-api';
 import { Link } from 'react-router-dom';
 
-/** Cursor-inspired Connections: Models providers | Runtimes | Postgres | email / calendar / Drive / API stubs. */
+/** Connections: Models providers | Runtimes | Postgres | email / calendar / Drive / API stubs. */
 export function SettingsConnections() {
   const [adding, setAdding] = useState(false);
   const { s, set } = useSettings();

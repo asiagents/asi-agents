@@ -50,6 +50,13 @@ const statusLabel: Record<ModuleEntry['status'], string> = {
   planned: 'Planned',
 };
 
+/** Research-preview: opens GitHub Releases — not a silent auto-updater. Override via VITE_ASI_GITHUB_RELEASES_URL. */
+const ASI_GITHUB_RELEASES_URL =
+  (typeof import.meta !== 'undefined' &&
+    (import.meta as ImportMeta & { env?: { VITE_ASI_GITHUB_RELEASES_URL?: string } }).env
+      ?.VITE_ASI_GITHUB_RELEASES_URL) ||
+  'https://github.com/vvarghese/asi-agents/releases';
+
 /** Settings → Modules — installed packs with honest status (not a marketplace). */
 export function SettingsModules() {
   const [data, setData] = useState<ModulesPayload | null>(null);
@@ -107,6 +114,27 @@ export function SettingsModules() {
 
   return (
     <>
+      <SettingsSection
+        title="Updates"
+        description="Research preview — no silent auto-updater. Check GitHub Releases, or run scripts/update-asi.cmd."
+      >
+        <div className="rounded-card bg-surface ring-1 ring-line">
+          <SettingsRow
+            title="Check for updates"
+            detail="Opens GitHub Releases (notes + Snapdragon zip). Does not download or install automatically."
+          >
+            <a
+              href={ASI_GITHUB_RELEASES_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-lg bg-raised px-3 py-1.5 text-[13px] font-medium text-accent-ink ring-1 ring-line hover:underline"
+            >
+              Open Releases
+            </a>
+          </SettingsRow>
+        </div>
+      </SettingsSection>
+
       <SettingsSection
         title="Companion characters"
         description={
@@ -237,11 +265,6 @@ export function SettingsModules() {
                         Advanced tools: Desk → Advanced · Agent browser tools
                       </span>
                     </>
-                  ) : null}
-                  {m.id === 'games' ? (
-                    <Link to="/arcade" className="font-medium text-accent-ink hover:underline">
-                      Open Arcade
-                    </Link>
                   ) : null}
                   {m.id === 'ams' || m.id === 'router' ? (
                     <Link to="/settings/models" className="font-medium text-accent-ink hover:underline">

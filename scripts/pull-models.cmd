@@ -23,8 +23,10 @@ echo [AMS] checking models\ams weights...
 call npm.cmd run verify:ams
 if errorlevel 1 (
   echo.
-  echo [AMS] weights missing — see models\ams\PLACE-WEIGHTS-HERE.md
-  echo       or: npm run install:ams
+  echo [AMS] weights missing — GitHub-clean trees do not ship ONNX.
+  echo       1. Download Release zip / onnx assets into models\ams\
+  echo       2. Or: npm run install:ams  (Hugging Face)
+  echo       See models\ams\PLACE-WEIGHTS-HERE.md
   exit /b 2
 )
 

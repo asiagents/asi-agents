@@ -9,7 +9,6 @@
     "test:intent": "tsx src/intent/match.test.ts && tsx src/intent/fanOut.test.ts && tsx src/intent/renameDisplay.test.ts && tsx src/intent/simpleArithmetic.test.ts"
   },
   "dependencies": {
-    "@asi-agents/games": "0.1.0-mvp",
     "@asi-agents/postgres-store": "0.1.0-mvp",
     "@asi-agents/virtual-computer": "0.1.0-mvp",
     "cors": "^2.8.5",

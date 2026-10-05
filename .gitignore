@@ -30,3 +30,8 @@ models/custom/*.onnx
 !models/ams/README.md
 !models/ams/PLACE-WEIGHTS-HERE.md
 !models/ams/.gitkeep
+
+GITHUB-*.md
+PUBLIC-LISTING.md
+PRE-RELEASE-*
+docs/PUBLISH-GITHUB.md
